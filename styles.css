@@ -1,0 +1,2670 @@
+/* ==========================================================================
+   GABRIELA & DAVID - MEMORANDUM // PROJECT HAIL MARY
+   Estética: Diario Romántico Cósmico, Scrapbook, Doodles & Pestañas Interactivas
+   ========================================================================== */
+
+:root {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-hand: 'Caveat', cursive;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Colores Cálidos & Espaciales */
+  --space-bg: #060814;
+  --space-twilight: #0e1224;
+  --paper-cream: #fffcf5;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-warm: #ffeedb;
+
+  /* Acentos Project Hail Mary */
+  --hail-crimson: #ff3366;
+  --hail-crimson-glow: rgba(255, 51, 102, 0.45);
+  --hail-emerald: #10b981;
+  --hail-emerald-glow: rgba(16, 185, 129, 0.4);
+  --gold-warm: #f6c065;
+  --gold-glow: rgba(246, 192, 101, 0.35);
+
+  /* Scrapbook / Washi Tape */
+  --tape-color: rgba(255, 235, 195, 0.35);
+  --card-bg: rgba(10, 14, 30, 0.42);
+  --card-border: rgba(255, 230, 210, 0.25);
+
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--space-bg);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow: hidden; /* Prevent ugly double scrollbars, stage handles smooth navigation */
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==========================================================================
+   TOP ROMANTIC HEADER & VISIBLE TABS BAR
+   ========================================================================== */
+.romantic-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 74px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(6, 8, 20, 0.95) 0%, rgba(6, 8, 20, 0.4) 80%, transparent 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.heart-pulse {
+  color: var(--hail-crimson);
+  font-size: 1.35rem;
+  filter: drop-shadow(0 0 10px var(--hail-crimson));
+  animation: heart-beat 1.6s infinite ease-in-out;
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.22); }
+  40% { transform: scale(1.08); }
+  60% { transform: scale(1.18); }
+}
+
+.header-story-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.handwritten-subtitle {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--gold-warm);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.couple-tag {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   BARRA DE PESTAÑAS VISIBLES (STORY TABS)
+   ========================================================================== */
+.story-tabs-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(15, 20, 38, 0.85);
+  border: 1px solid rgba(255, 220, 200, 0.22);
+  padding: 0.35rem 0.5rem;
+  border-radius: 35px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.story-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 25px;
+  padding: 0.45rem 1.05rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-spring);
+  outline: none;
+  white-space: nowrap;
+}
+
+.story-tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.story-tab-btn.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--hail-crimson), #c2185b);
+  border-color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  box-shadow: 0 4px 18px var(--hail-crimson-glow);
+  transform: translateY(-1px);
+}
+
+.tab-icon {
+  font-size: 0.95rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Peek / View Background Toggle Button */
+.peek-bg-btn {
+  background: rgba(14, 18, 34, 0.75);
+  border: 1px solid rgba(255, 225, 205, 0.22);
+  padding: 0.42rem 0.95rem;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-warm);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-smooth);
+  backdrop-filter: blur(14px);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.peek-bg-btn:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: var(--hail-emerald);
+  color: #ffffff;
+  box-shadow: 0 0 20px var(--hail-emerald-glow);
+  transform: translateY(-1px);
+}
+
+.peek-bg-btn.active {
+  background: linear-gradient(135deg, var(--hail-emerald), #059669);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  box-shadow: 0 0 20px var(--hail-emerald-glow);
+}
+
+/* Music Button: A Moment by Daniel Pemberton */
+.music-capsule-btn {
+  background: rgba(14, 18, 34, 0.85);
+  border: 1px solid rgba(255, 225, 205, 0.22);
+  padding: 0.4rem 1.1rem;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-warm);
+  cursor: pointer;
+  transition: all 0.3s var(--ease-smooth);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-capsule-btn:hover {
+  background: rgba(255, 51, 102, 0.18);
+  border-color: var(--hail-crimson);
+  box-shadow: 0 0 22px rgba(255, 51, 102, 0.35);
+  transform: translateY(-1px);
+}
+
+.music-capsule-btn.playing {
+  border-color: var(--hail-crimson);
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.35);
+}
+
+/* Vinyl Disc Icon */
+.music-disc-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2d3748 20%, #1a202c 45%, #171923 70%, #000000 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.disc-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hail-crimson);
+  box-shadow: 0 0 6px var(--hail-crimson);
+}
+
+.music-capsule-btn.playing .music-disc-icon {
+  animation: spin-disc 3s linear infinite;
+}
+
+@keyframes spin-disc {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Track Info */
+.music-track-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.music-track-title {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+}
+
+.music-track-artist {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  color: var(--gold-warm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sound-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 14px;
+  margin-left: 2px;
+}
+
+.sound-bars span {
+  width: 2px;
+  height: 35%;
+  background-color: var(--text-muted);
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.music-capsule-btn.playing .sound-bars span {
+  background-color: var(--hail-crimson);
+  animation: bar-dance 0.9s infinite ease-in-out alternate;
+}
+
+.music-capsule-btn.playing .sound-bars span:nth-child(1) { animation-delay: 0.05s; }
+.music-capsule-btn.playing .sound-bars span:nth-child(2) { animation-delay: 0.25s; }
+.music-capsule-btn.playing .sound-bars span:nth-child(3) { animation-delay: 0.15s; }
+.music-capsule-btn.playing .sound-bars span:nth-child(4) { animation-delay: 0.35s; }
+
+@keyframes bar-dance {
+  0% { height: 20%; }
+  100% { height: 100%; }
+}
+
+
+
+/* ==========================================================================
+   FIXED STAGE & VIEWPORT
+   ========================================================================== */
+.fixed-stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--space-bg);
+  padding-top: 48px;
+  padding-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.stage-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stars-canvas {
+  z-index: 1;
+}
+
+.astrophage-canvas {
+  z-index: 4;
+  mix-blend-mode: screen;
+}
+
+/* Cinematic Film Layers */
+.cinema-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.85s ease-in-out;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.film-frame {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  transition: transform 1.2s var(--ease-smooth), filter 0.8s ease;
+  filter: brightness(0.96) contrast(1.08) saturate(1.18);
+}
+
+.layer-cosmos {
+  z-index: 2;
+  opacity: 1;
+}
+
+.ambient-nebula-glow {
+  position: absolute;
+  width: 140vw;
+  height: 140vh;
+  top: -20vh;
+  left: -20vw;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 20, 55, 0.35) 0%, rgba(18, 12, 35, 0.2) 40%, rgba(6, 8, 20, 0.85) 75%);
+}
+
+.layer-astrophage {
+  z-index: 3;
+}
+
+.warm-red-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 65% 45%, rgba(255, 51, 102, 0.18) 0%, rgba(120, 15, 45, 0.2) 50%, rgba(6, 8, 20, 0.6) 100%);
+  mix-blend-mode: screen;
+}
+
+.layer-tauceti {
+  z-index: 3;
+}
+
+.warm-emerald-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(16, 185, 129, 0.2) 0%, rgba(246, 192, 101, 0.12) 45%, rgba(6, 8, 20, 0.6) 100%);
+  mix-blend-mode: screen;
+}
+
+.dream-halo {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(6, 8, 20, 0.3) 75%, rgba(6, 8, 20, 0.65) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.analog-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CARD DOODLES & SCRAPBOOK STICKERS (INTEGRADOS AL RELATO)
+   ========================================================================== */
+.card-doodle {
+  pointer-events: auto;
+  transition: transform 0.4s var(--ease-spring), opacity 0.4s ease;
+  z-index: 15;
+}
+
+.sticker-img {
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.65));
+  transition: transform 0.4s var(--ease-spring);
+}
+
+/* Washi Tape Accent */
+.washi-tape {
+  position: absolute;
+  background: var(--tape-color);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(255, 255, 255, 0.25);
+  border-right: 2px dashed rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.tape-top {
+  width: 85px;
+  height: 20px;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.tape-angle {
+  width: 75px;
+  height: 18px;
+  top: -8px;
+  right: -10px;
+  transform: rotate(25deg);
+}
+
+/* 1. Acto I: Parche de la Misión (Mayor separación de la tarjeta / pestaña) */
+.doodle-patch {
+  position: absolute;
+  left: -265px;
+  top: 45px;
+  width: 175px;
+  transform: rotate(-6deg);
+}
+
+.doodle-patch:hover {
+  transform: rotate(0deg) scale(1.06);
+}
+
+.patch-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.note-patch {
+  position: absolute;
+  top: 100%;
+  left: -10px;
+  width: 220px;
+  margin-top: 0.8rem;
+  font-family: var(--font-hand);
+  color: var(--gold-warm);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.note-patch small {
+  font-size: 1.05rem;
+  color: var(--text-warm);
+  opacity: 0.9;
+}
+
+.arrow-doodle {
+  font-size: 1.5rem;
+  display: inline-block;
+  transform: rotate(45deg);
+  margin-right: 4px;
+}
+
+/* 2. Acto II: Rocky Saludando */
+.doodle-rocky-wave {
+  position: absolute;
+  right: -265px;
+  top: 30px;
+  width: 195px;
+  transform: rotate(6deg);
+  animation: rocky-bob 4s infinite ease-in-out;
+}
+
+@keyframes rocky-bob {
+  0%, 100% { transform: rotate(6deg) translateY(0); }
+  50% { transform: rotate(8deg) translateY(-12px); }
+}
+
+.rocky-wave-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+.doodle-rocky-wave:hover .rocky-wave-img {
+  animation: rocky-wiggle 0.5s ease;
+}
+
+@keyframes rocky-wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1.08); }
+  25% { transform: rotate(-8deg) scale(1.1); }
+  75% { transform: rotate(8deg) scale(1.1); }
+}
+
+.speech-bubble-rocky {
+  position: absolute;
+  bottom: 96%;
+  left: -30px;
+  background: rgba(255, 252, 245, 0.96);
+  color: #1a1e2e;
+  padding: 0.65rem 1.15rem;
+  border-radius: 18px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.bubble-chord {
+  color: var(--hail-crimson);
+  font-size: 1rem;
+  margin-right: 4px;
+}
+
+.bubble-sub {
+  display: block;
+  font-size: 1rem;
+  color: #e11d48;
+  font-weight: 600;
+}
+
+.note-rocky {
+  margin-top: 0.6rem;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--text-warm);
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.click-hint {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--gold-warm);
+  opacity: 0.85;
+}
+
+/* 3. Acto III: Rocky Fist-Bump */
+.doodle-rocky-fist {
+  position: absolute;
+  left: -265px;
+  bottom: 25px;
+  width: 180px;
+  transform: rotate(-7deg);
+}
+
+.polaroid-frame {
+  background: #ffffff;
+  padding: 0.75rem 0.75rem 1.3rem 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  transform: rotate(1deg);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.doodle-rocky-fist:hover .polaroid-frame {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.rocky-fist-img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  background: #181d2e;
+  border-radius: 4px;
+  display: block;
+}
+
+.polaroid-caption {
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2c3248;
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+.note-fist {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--gold-warm);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   TODOS LOS DOODLES SCRAPBOOK (DISTRIBUCIÓN EN CADA ACTO)
+   ========================================================================== */
+
+/* Doodle Photo Image */
+.doodle-photo-img {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.frame-tilt-left {
+  transform: rotate(-3deg);
+}
+
+.frame-tilt-right {
+  transform: rotate(3deg);
+}
+
+.card-doodle:hover .polaroid-frame {
+  transform: rotate(0deg) scale(1.06);
+}
+
+/* Washi Tapes Coloridos */
+.tape-pink {
+  position: absolute;
+  width: 75px;
+  height: 18px;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  background: rgba(255, 180, 205, 0.6);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(220, 110, 145, 0.45);
+  border-right: 2px dashed rgba(220, 110, 145, 0.45);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.tape-gold {
+  position: absolute;
+  width: 75px;
+  height: 18px;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2.5deg);
+  background: rgba(255, 225, 160, 0.65);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(200, 155, 75, 0.45);
+  border-right: 2px dashed rgba(200, 155, 75, 0.45);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.tape-teal {
+  position: absolute;
+  width: 75px;
+  height: 18px;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  background: rgba(160, 235, 215, 0.6);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(70, 180, 155, 0.45);
+  border-right: 2px dashed rgba(70, 180, 155, 0.45);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+/* 4. Acto III (Derecha): Gatitos Besándose (Sahur) */
+.doodle-sahur {
+  position: absolute;
+  right: -265px;
+  top: 30px;
+  width: 180px;
+  transform: rotate(5deg);
+}
+
+.note-sahur,
+.note-dinos,
+.note-couple,
+.note-speed,
+.note-tung {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: var(--gold-warm);
+  margin-top: 0.5rem;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+
+/* 5. Acto IV (Izquierda): Dinos Abrazados */
+.doodle-dinos {
+  position: absolute;
+  left: -265px;
+  top: 30px;
+  width: 180px;
+  transform: rotate(-5deg);
+}
+
+/* 6. Acto IV (Derecha): Parejita con lacito y gorra */
+.doodle-couple {
+  position: absolute;
+  right: -265px;
+  top: 30px;
+  width: 180px;
+  transform: rotate(4deg);
+}
+
+/* 7. Acto V (Galería - Flotante por fuera a la derecha): Cristiano & Speed */
+.doodle-speed {
+  position: absolute;
+  right: -250px;
+  top: 35px;
+  width: 180px;
+  transform: rotate(6deg);
+  z-index: 30;
+  pointer-events: auto;
+}
+
+.doodle-speed:hover {
+  transform: rotate(0deg) scale(1.06);
+}
+
+/* 8. Acto VI (Dedicatoria - Flotante por fuera a la izquierda): Mokujin & Novia */
+.doodle-tung {
+  position: absolute;
+  left: -250px;
+  top: 60px;
+  width: 180px;
+  transform: rotate(-4deg);
+  z-index: 30;
+  pointer-events: auto;
+}
+
+.doodle-tung:hover {
+  transform: rotate(0deg) scale(1.06);
+}
+
+/* Etiqueta de Sonido Interactivo */
+.doodle-sound-tag {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 2px 9px;
+  background: rgba(255, 51, 102, 0.22);
+  border: 1px solid rgba(255, 51, 102, 0.45);
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  color: #ff99b3;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.card-doodle:hover .doodle-sound-tag {
+  background: var(--hail-crimson);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 51, 102, 0.7);
+  transform: scale(1.05);
+}
+
+/* Animación de Rebote al hacer Clic en cualquier Doodle */
+@keyframes doodle-bounce {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.18) rotate(4deg); }
+  50% { transform: scale(0.94) rotate(-3deg); }
+  75% { transform: scale(1.06) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.doodle-clicked .polaroid-frame,
+.doodle-clicked .sticker-img {
+  animation: doodle-bounce 0.55s var(--ease-spring) !important;
+}
+
+/* ==========================================================================
+   JOURNAL CARDS (CONTENIDO DE LAS PESTAÑAS)
+   ========================================================================== */
+.journal-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1120px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.journal-card {
+  position: absolute;
+  width: 100%;
+  padding: 3.2rem 2.8rem 2.4rem 2.8rem;
+  background: linear-gradient(135deg, rgba(14, 18, 38, 0.44) 0%, rgba(8, 12, 26, 0.36) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition: opacity 0.5s ease-out, transform 0.5s var(--ease-spring), backdrop-filter 0.4s ease;
+  pointer-events: none;
+  text-align: center;
+}
+
+.journal-card:not(.gallery-card) {
+  max-width: 660px;
+}
+
+.journal-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Modo contemplación de escena (se activa con el botón 'Ver fondo' o clic fuera) */
+body.viewing-background .journal-card {
+  opacity: 0.08 !important;
+  pointer-events: none !important;
+  transform: scale(0.96) translateY(12px) !important;
+}
+
+body.viewing-background .card-doodle {
+  opacity: 0.1 !important;
+  pointer-events: none !important;
+}
+
+body.viewing-background .film-frame {
+  transform: scale(1.08) !important;
+  filter: brightness(1.05) contrast(1.12) saturate(1.2) !important;
+}
+
+/* Card Tape Accent */
+.card-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 24px;
+  background: var(--tape-color);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(255, 255, 255, 0.3);
+  border-right: 2px dashed rgba(255, 255, 255, 0.3);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Stamp Tag */
+.stamp-tag {
+  display: inline-block;
+  padding: 0.35rem 1.1rem;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--gold-warm);
+  background: rgba(246, 192, 101, 0.12);
+  border: 1px solid rgba(246, 192, 101, 0.3);
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.tag-crimson {
+  color: #ff99b3;
+  background: rgba(255, 51, 102, 0.12);
+  border-color: rgba(255, 51, 102, 0.35);
+}
+
+.tag-emerald {
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.tag-gold {
+  color: #fef08a;
+  background: rgba(246, 192, 101, 0.15);
+  border-color: rgba(246, 192, 101, 0.4);
+}
+
+/* Headlines */
+.card-headline {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 1.1rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.headline-crimson {
+  background: linear-gradient(135deg, #ffffff 40%, #ff80a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headline-emerald {
+  background: linear-gradient(135deg, #ffffff 40%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.couple-title {
+  font-family: var(--font-serif);
+  font-size: 3.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #ffffff 30%, #ffd6a5 70%, #ff85a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 40px rgba(255, 214, 165, 0.3);
+}
+
+.handwritten-title-sub {
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  color: var(--gold-warm);
+  margin-bottom: 1.2rem;
+}
+
+.card-lead {
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+
+.card-body-text {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+  margin-bottom: 1.2rem;
+}
+
+.final-lead {
+  font-size: 1.2rem;
+  color: var(--text-warm);
+}
+
+/* Handwritten Quotes */
+.handwritten-quote {
+  font-family: var(--font-hand);
+  font-size: 1.55rem;
+  line-height: 1.4;
+  color: var(--gold-warm);
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+.quote-mark {
+  color: var(--hail-crimson);
+  font-size: 1.8rem;
+  margin: 0 4px;
+}
+
+/* Sticky Yellow Scratch Note */
+.sticky-scratch-note {
+  position: relative;
+  background: #fef08a;
+  color: #1c1917;
+  padding: 0.9rem 1.4rem;
+  border-radius: 6px;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.35;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  margin: 1.2rem auto 0 auto;
+  max-width: 480px;
+}
+
+.pin-icon {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+}
+
+.love-pill-box {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px dashed rgba(16, 185, 129, 0.4);
+  padding: 0.6rem 1.4rem;
+  border-radius: 30px;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: #a7f3d0;
+  margin-top: 0.8rem;
+}
+
+/* ==========================================================================
+   CARD FOOTER NAVIGATION (BOTONES ANTERIOR / SIGUIENTE)
+   ========================================================================== */
+.card-footer-nav {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.nav-button-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-next-step-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--hail-crimson), #c2185b);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 0.75rem 1.8rem;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 8px 25px var(--hail-crimson-glow);
+  transition: all 0.3s var(--ease-spring);
+}
+
+.nav-next-step-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(255, 51, 102, 0.6);
+  border-color: #ffffff;
+}
+
+.nav-prev-step-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-warm);
+  padding: 0.75rem 1.4rem;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-prev-step-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.mouse-scroll-indicator {
+  margin-top: 0.3rem;
+}
+
+.mouse-scroll-text {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--gold-warm);
+  opacity: 0.9;
+}
+
+/* Climax Chapter Action Box */
+.chapter-action-box {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.romantic-portal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 1.15rem 2.8rem;
+  background: linear-gradient(135deg, var(--hail-crimson), #c2185b);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 12px 35px var(--hail-crimson-glow);
+  transition: all 0.4s var(--ease-spring);
+}
+
+.romantic-portal-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 18px 45px rgba(255, 51, 102, 0.6);
+  border-color: #ffffff;
+}
+
+.btn-sparkle {
+  color: var(--gold-warm);
+  font-size: 1.1rem;
+}
+
+.small-whisper {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--text-warm);
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   SWEET ROMANTIC FOOTER
+   ========================================================================== */
+.romantic-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background: linear-gradient(0deg, rgba(6, 8, 20, 0.85) 0%, transparent 100%);
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--text-warm);
+  pointer-events: none;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-heart {
+  color: var(--hail-crimson);
+  animation: heart-beat 2s infinite ease-in-out;
+}
+
+.scroll-meter {
+  color: var(--gold-warm);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+
+
+/* ==========================================================================
+   ACTO 5: GALERÍA DE POLAROIDS & RECUERDOS (DISEÑO DEFINITIVO)
+   ========================================================================== */
+.gallery-card {
+  max-width: 860px !important;
+  width: 90vw;
+  max-height: calc(100dvh - 142px) !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.gallery-scroll-viewport {
+  width: 100%;
+  max-height: calc(100dvh - 142px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding: 2rem 2.4rem 2rem 2.4rem;
+  background: linear-gradient(135deg, rgba(14, 18, 38, 0.44) 0%, rgba(8, 12, 26, 0.36) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-warm) rgba(255, 255, 255, 0.05);
+}
+
+.gallery-scroll-viewport::-webkit-scrollbar {
+  width: 6px;
+}
+.gallery-scroll-viewport::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+.gallery-scroll-viewport::-webkit-scrollbar-thumb {
+  background: var(--gold-warm);
+  border-radius: 4px;
+}
+
+.tag-gallery {
+  color: #fed7aa;
+  background: rgba(251, 146, 60, 0.14);
+  border-color: rgba(251, 146, 60, 0.35);
+}
+
+.headline-gallery {
+  background: linear-gradient(135deg, #ffffff 40%, #fdba74 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin-top: 1.8rem;
+  text-align: left;
+}
+
+/* Polaroid Item (Estilo Fotografía Instantánea Auténtica) */
+.polaroid-item {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  padding: 12px 12px 20px 12px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  position: relative !important;
+  cursor: pointer !important;
+  transition: transform 0.4s var(--ease-spring), box-shadow 0.4s ease, border-color 0.4s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Tilted Angles for organic scrapbook feel */
+.polaroid-item:nth-child(1) { transform: rotate(-2.5deg); }
+.polaroid-item:nth-child(2) { transform: rotate(1.8deg); }
+.polaroid-item:nth-child(3) { transform: rotate(-1.5deg); }
+.polaroid-item:nth-child(4) { transform: rotate(2.2deg); }
+.polaroid-item:nth-child(5) { transform: rotate(-2deg); }
+.polaroid-item:nth-child(6) { transform: rotate(1.5deg); }
+
+/* Washi Tape on Polaroid Top */
+.polaroid-tape-accent {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 65px;
+  height: 18px;
+  background: rgba(255, 235, 195, 0.75);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(180, 150, 110, 0.45);
+  border-right: 2px dashed rgba(180, 150, 110, 0.45);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+}
+
+/* HOVER EFFECTS */
+.polaroid-item:hover {
+  transform: translateY(-12px) rotate(0deg) scale(1.05) !important;
+  z-index: 25 !important;
+  box-shadow: 0 22px 50px rgba(255, 51, 102, 0.35), 0 0 25px rgba(246, 192, 101, 0.3) !important;
+  border-color: #ffe4e6 !important;
+}
+
+.polaroid-img-box {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  height: auto !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background: #0f172a !important;
+}
+
+.polaroid-thumb {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.6s var(--ease-smooth), filter 0.4s ease !important;
+}
+
+.polaroid-item:hover .polaroid-thumb {
+  transform: scale(1.08) !important;
+  filter: brightness(1.04) !important;
+}
+
+/* Glare sweep effect on hover */
+.polaroid-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.polaroid-item:hover .polaroid-glare {
+  opacity: 1;
+}
+
+/* Favorite Heart Badge */
+.polaroid-fav-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #ff3366;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s var(--ease-spring);
+  z-index: 6;
+}
+
+.polaroid-item:hover .polaroid-fav-btn {
+  transform: scale(1.2);
+  background: #ffffff;
+  color: #e11d48;
+  box-shadow: 0 0 12px rgba(255, 51, 102, 0.5);
+}
+
+/* Polaroid Metadata (Chin of Polaroid) */
+.polaroid-meta {
+  padding-top: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 0.2rem !important;
+}
+
+.polaroid-date {
+  font-family: var(--font-sans) !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  color: #e11d48 !important;
+  text-transform: uppercase !important;
+}
+
+.polaroid-title {
+  font-family: var(--font-hand) !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  line-height: 1.2 !important;
+  transition: color 0.3s ease !important;
+}
+
+.polaroid-item:hover .polaroid-title {
+  color: var(--hail-crimson) !important;
+}
+
+.polaroid-legend {
+  font-size: 0.82rem !important;
+  color: #475569 !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* ==========================================================================
+   LIGHTBOX MODAL FOR FULL VIEW
+   ========================================================================== */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 8, 20, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.lightbox-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-dialog {
+  background: rgba(18, 22, 38, 0.96);
+  border: 1px solid rgba(255, 220, 200, 0.25);
+  border-radius: 24px;
+  max-width: 820px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  transform: scale(0.92);
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.lightbox-backdrop.active .lightbox-dialog {
+  transform: scale(1);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.lightbox-close-btn:hover {
+  background: var(--hail-crimson);
+  border-color: var(--hail-crimson);
+  transform: rotate(90deg);
+}
+
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.lightbox-img-box {
+  width: 100%;
+  height: 420px;
+  background: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-details {
+  padding: 1.8rem 2.2rem;
+  text-align: left;
+  background: rgba(14, 18, 34, 0.9);
+}
+
+.lightbox-tag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--gold-warm);
+  text-transform: uppercase;
+}
+
+.lightbox-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin: 0.3rem 0 0.6rem 0;
+}
+
+.lightbox-legend {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.lightbox-nav-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.lightbox-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 0.55rem 1.4rem;
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-btn:hover {
+  background: var(--hail-crimson);
+  border-color: var(--hail-crimson);
+}
+
+/* ==========================================================================
+   ACTO 6: CARTA DE DEDICATORIA EN UNA HOJA (MANUSCRITO ROMÁNTICO)
+   ========================================================================== */
+.letter-card {
+  max-width: 800px !important;
+  width: 90vw;
+  max-height: calc(100dvh - 142px) !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.letter-scroll-viewport {
+  width: 100%;
+  max-height: calc(100dvh - 142px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding: 2rem 2rem 2rem 2rem;
+  background: linear-gradient(135deg, rgba(14, 18, 38, 0.44) 0%, rgba(8, 12, 26, 0.36) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-warm) rgba(255, 255, 255, 0.05);
+}
+
+.letter-scroll-viewport::-webkit-scrollbar {
+  width: 6px;
+}
+.letter-scroll-viewport::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+}
+.letter-scroll-viewport::-webkit-scrollbar-thumb {
+  background: var(--gold-warm);
+  border-radius: 4px;
+}
+
+/* Hoja de Papel (Papelería Clásica de Diario Íntimo - 100% Opaca) */
+.letter-sheet {
+  position: relative;
+  background-color: #faf6ee !important;
+  background-image: 
+    repeating-linear-gradient(
+      transparent,
+      transparent 33px,
+      rgba(180, 140, 100, 0.22) 33px,
+      rgba(180, 140, 100, 0.22) 34px
+    ),
+    linear-gradient(180deg, #fffefb 0%, #f7f0e1 100%) !important;
+  color: #1e1b18 !important;
+  padding: 3.6rem 3.4rem 3.8rem 4.4rem;
+  border-radius: 8px;
+  box-shadow: 
+    0 25px 65px rgba(0, 0, 0, 0.75),
+    0 4px 18px rgba(0, 0, 0, 0.35),
+    inset 0 0 90px rgba(220, 195, 160, 0.32) !important;
+  border: 1px solid rgba(225, 205, 175, 0.95) !important;
+  line-height: 34px;
+  text-align: left;
+}
+
+/* Línea de margen vertical roja tipo cuaderno de notas */
+.letter-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 54px;
+  width: 2px;
+  background: rgba(239, 68, 68, 0.5) !important;
+  pointer-events: none;
+}
+
+/* Cinta Washi decorativa superior */
+.letter-tape-top {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.2deg);
+  width: 130px;
+  height: 25px;
+  background: rgba(255, 230, 185, 0.88);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(180, 135, 80, 0.45);
+  border-right: 2px dashed rgba(180, 135, 80, 0.45);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+/* Cabecera de la Hoja */
+.letter-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: #786252;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed rgba(195, 165, 135, 0.38);
+}
+
+.letter-origin,
+.letter-date-box {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Saludo de la carta */
+.letter-salutation-box {
+  margin-bottom: 1.2rem;
+}
+
+.letter-recipient {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e1b18;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.letter-lead-handwritten {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #b45309;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.letter-divider-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1.2rem 0 2rem 0;
+  color: #d97706;
+}
+
+.letter-divider-line::before,
+.letter-divider-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(217, 119, 6, 0.3), transparent);
+}
+
+.divider-gem {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+/* Secciones de la Carta */
+.letter-section {
+  margin-bottom: 2.2rem;
+  text-align: left;
+}
+
+.letter-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.6rem;
+  padding: 0.25rem 0.85rem 0.25rem 0.35rem;
+  background: rgba(246, 192, 101, 0.18);
+  border-radius: 20px;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+
+.badge-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #b45309;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.badge-title {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #451a03 !important;
+  letter-spacing: 0.02em;
+}
+
+.letter-body-p {
+  font-family: var(--font-hand);
+  font-size: 1.48rem;
+  line-height: 34px;
+  color: #1e1b18 !important;
+  margin: 0;
+  padding-left: 0.5rem;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+}
+
+/* Recuadro de Frase / Cita Central */
+.letter-highlight-banner {
+  background: linear-gradient(135deg, rgba(255, 241, 242, 0.95), rgba(254, 243, 199, 0.88));
+  border-left: 4px solid #f43f5e;
+  border-right: 1px solid rgba(244, 63, 94, 0.2);
+  border-top: 1px solid rgba(244, 63, 94, 0.2);
+  border-bottom: 1px solid rgba(244, 63, 94, 0.2);
+  border-radius: 8px;
+  padding: 1.4rem 1.8rem;
+  margin: 2.2rem 0;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(244, 63, 94, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.banner-quote-icon {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  color: #f43f5e;
+  line-height: 0.8;
+  opacity: 0.6;
+}
+
+.banner-quote-text {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #9f1239;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.banner-heart {
+  color: #e11d48;
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+/* Posdata Box */
+.letter-ps-box {
+  background: rgba(254, 240, 138, 0.3);
+  border: 1px dashed rgba(202, 138, 4, 0.45);
+  border-radius: 8px;
+  padding: 1rem 1.4rem;
+  margin: 2rem 0 1.5rem 0;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: #713f12;
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.ps-tag {
+  font-weight: 700;
+  color: #b45309;
+  flex-shrink: 0;
+}
+
+.ps-content {
+  margin: 0;
+}
+
+/* Despedida y Firma Manuscrita con Sello de Lacre */
+.letter-closing-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2.2rem;
+  margin-top: 2.6rem;
+  padding-top: 1.8rem;
+  border-top: 1px dashed rgba(195, 165, 135, 0.45);
+  position: relative;
+}
+
+.letter-closing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  line-height: 1.2;
+}
+
+.letter-signoff {
+  font-family: var(--font-hand) !important;
+  font-size: 1.55rem !important;
+  color: #6b5545 !important;
+  margin: 0 0 0.3rem 0 !important;
+  line-height: 1.2 !important;
+}
+
+.letter-signature {
+  font-family: var(--font-hand) !important;
+  font-size: 3.4rem !important;
+  font-weight: 700 !important;
+  color: #a81c2f !important;
+  line-height: 1 !important;
+  letter-spacing: 0.02em !important;
+  transform: rotate(-2.5deg);
+  text-shadow: 0 1px 2px rgba(168, 28, 47, 0.18);
+  margin: 0 !important;
+}
+
+/* Sello de Lacre Auténtico (Proporciones perfectas sin desbordes) */
+.letter-wax-seal {
+  position: relative;
+  width: 78px;
+  height: 78px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #f43f5e 0%, #be123c 45%, #881337 80%, #4c0519 100%);
+  box-shadow: 
+    0 6px 16px rgba(136, 19, 55, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.22),
+    inset 0 2px 4px rgba(255, 255, 255, 0.45),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-6deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.letter-wax-seal:hover {
+  transform: rotate(0deg) scale(1.06);
+  box-shadow: 
+    0 8px 22px rgba(136, 19, 55, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.25),
+    inset 0 2px 5px rgba(255, 255, 255, 0.5);
+}
+
+.seal-outer-rim {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 225, 230, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.seal-inner-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1 !important;
+}
+
+.seal-heart {
+  font-size: 1.45rem !important;
+  line-height: 1 !important;
+  color: #fff1f2 !important;
+  filter: drop-shadow(0 1px 2px rgba(76, 5, 25, 0.6));
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+}
+
+.seal-motto {
+  font-family: var(--font-sans) !important;
+  font-size: 0.46rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
+  color: #ffe4e6 !important;
+  text-transform: uppercase;
+  margin-top: 4px !important;
+  line-height: 1 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+
+/* Doblez decorativo inferior de la hoja */
+.sheet-corner-fold {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, transparent 50%, #e8decb 50%);
+  box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.12);
+  border-top-left-radius: 4px;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SISTEMA DE DISEÑO RESPONSIVE ADAPTATIVO (MÓVILES, TABLETS & RETINA)
+   Preserva al 100% las animaciones, interacción, estética romántica y legibilidad
+   ========================================================================== */
+
+/* Tablets & Pantallas Medianas (<= 1024px) */
+@media (max-width: 1024px) {
+  .story-tab-btn {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.78rem;
+  }
+  .scrapbook-nav {
+    right: 1rem;
+    gap: 1.6rem;
+  }
+  .bm-pin {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablets Pequeñas & Móviles Grandes (<= 860px) */
+@media (max-width: 860px) {
+  .romantic-header {
+    padding: 0.5rem 1rem;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .header-left {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .handwritten-subtitle {
+    font-size: 1.05rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .couple-tag {
+    font-size: 0.84rem;
+  }
+
+  .header-right {
+    flex-shrink: 0;
+  }
+
+  .story-tabs-bar {
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.3rem 0.45rem;
+    gap: 0.35rem;
+    border-radius: 25px;
+  }
+
+  .story-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .story-tab-btn {
+    font-size: 0.74rem;
+    padding: 0.35rem 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .scrapbook-nav {
+    display: none; /* En pantallas táctiles las pestañas superiores lideran la navegación */
+  }
+
+  .journal-wrapper {
+    padding: 1rem;
+    margin-top: 45px;
+  }
+
+  .journal-card {
+    padding: 2.2rem 1.6rem;
+    max-width: 94vw;
+    max-height: calc(100dvh - 125px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(246, 192, 101, 0.4) transparent;
+  }
+
+  .journal-card::-webkit-scrollbar {
+    width: 4px;
+  }
+  .journal-card::-webkit-scrollbar-thumb {
+    background: rgba(246, 192, 101, 0.4);
+    border-radius: 4px;
+  }
+
+  .card-headline {
+    font-size: 1.8rem;
+  }
+
+  .couple-title {
+    font-size: 2.5rem;
+  }
+
+  /* Doodles integrados al flujo de la tarjeta en tablets y móviles (¡CERO SUPERPOSICIONES!) */
+  .card-doodle {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    margin: 0 auto 0.85rem auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: auto !important;
+  }
+
+  .doodle-patch {
+    width: 85px !important;
+    transform: rotate(-3deg) !important;
+  }
+  .note-patch {
+    display: none !important;
+  }
+
+  .doodle-rocky-wave {
+    width: 90px !important;
+    transform: rotate(3deg) !important;
+  }
+  .speech-bubble-rocky {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin-bottom: 6px !important;
+    font-size: 0.85rem !important;
+    padding: 0.35rem 0.8rem !important;
+    white-space: normal !important;
+    text-align: center !important;
+    border-radius: 14px !important;
+  }
+  .note-rocky {
+    margin-top: 4px !important;
+    font-size: 0.95rem !important;
+  }
+  .note-rocky p {
+    display: none !important;
+  }
+  .click-hint {
+    font-size: 0.82rem !important;
+    color: var(--gold-warm) !important;
+    display: block !important;
+  }
+
+  .doodle-rocky-fist {
+    width: 120px !important;
+    transform: rotate(-3deg) !important;
+  }
+  .polaroid-frame {
+    padding: 0.45rem 0.45rem 0.8rem 0.45rem !important;
+  }
+  .rocky-fist-img {
+    height: 80px !important;
+  }
+  .polaroid-caption {
+    font-size: 0.85rem !important;
+    margin-top: 0.3rem !important;
+  }
+  .note-fist {
+    display: none !important;
+  }
+
+  .accent-constellation {
+    display: none !important;
+  }
+
+  /* Galería en 2 columnas */
+  .gallery-card,
+  .letter-card {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  .gallery-scroll-viewport {
+    padding: 1.8rem 1.4rem !important;
+    max-height: calc(100dvh - 125px) !important;
+  }
+
+  .letter-scroll-viewport {
+    padding: 1.6rem 1.2rem !important;
+    max-height: calc(100dvh - 125px) !important;
+  }
+
+  .letter-sheet {
+    padding: 3rem 2.2rem 3rem 3.4rem;
+  }
+
+  .letter-sheet::before {
+    left: 36px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .lightbox-dialog {
+    width: 92vw;
+    max-height: 88dvh;
+  }
+
+  .lightbox-img-box {
+    height: 280px;
+  }
+
+  .lightbox-details {
+    padding: 1.4rem 1.6rem;
+  }
+}
+
+/* Teléfonos Móviles Estándar (<= 560px) */
+@media (max-width: 560px) {
+  .romantic-header {
+    padding: 0.45rem 0.75rem;
+    gap: 0.4rem;
+  }
+
+  .heart-pulse {
+    font-size: 1.15rem;
+  }
+
+  .handwritten-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .couple-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .peek-bg-btn {
+    padding: 0.32rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  .peek-text {
+    display: none; /* Dejar solo el icono de ojo en pantallas de teléfono */
+  }
+
+  .music-capsule-btn {
+    padding: 0.32rem 0.68rem;
+    gap: 0.45rem;
+  }
+
+  .music-track-title {
+    font-size: 0.78rem;
+  }
+
+  .music-track-artist {
+    display: none; /* Ocultar para mantener la cabecera en una sola fila limpia */
+  }
+
+  .music-disc-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .disc-core {
+    width: 6px;
+    height: 6px;
+  }
+
+  .sound-bars {
+    height: 11px;
+    gap: 1.5px;
+  }
+
+  .story-tabs-bar {
+    padding: 0.25rem 0.35rem;
+    gap: 0.3rem;
+    border-radius: 20px;
+  }
+
+  .story-tab-btn {
+    font-size: 0.7rem;
+    padding: 0.32rem 0.62rem;
+    gap: 0.35rem;
+  }
+
+  .tab-icon {
+    font-size: 0.85rem;
+  }
+
+  /* Contenedor central de tarjetas en móviles */
+  .journal-wrapper {
+    padding: 0.5rem;
+    margin-top: 50px;
+  }
+
+  .journal-card {
+    padding: 1.65rem 1.05rem 1.4rem 1.05rem !important;
+    border-radius: 20px;
+    max-height: calc(100dvh - 120px);
+  }
+
+  .card-tape {
+    width: 80px;
+    height: 18px;
+    top: -9px;
+  }
+
+  .stamp-tag {
+    font-size: 0.62rem;
+    padding: 0.25rem 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-headline {
+    font-size: 1.38rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .couple-title {
+    font-size: 2.05rem;
+    line-height: 1.15;
+  }
+
+  .handwritten-title-sub {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-lead {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-body-text {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 0.75rem;
+  }
+
+  .handwritten-quote {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin: 0.7rem 0;
+    padding: 0 0.3rem;
+  }
+
+  .quote-mark {
+    font-size: 1.4rem;
+  }
+
+  .sticky-scratch-note {
+    font-size: 1.05rem;
+    padding: 0.65rem 0.9rem;
+    max-width: 100%;
+    margin: 0.8rem auto 0 auto;
+  }
+
+  .love-pill-box {
+    font-size: 1.1rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .card-footer-nav {
+    margin-top: 1.2rem;
+    gap: 0.6rem;
+  }
+
+  .nav-button-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .nav-next-step-btn, .nav-prev-step-btn {
+    padding: 0.6rem 1.15rem;
+    font-size: 0.8rem;
+  }
+
+  .chapter-action-box {
+    margin-top: 1rem;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .romantic-portal-btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.86rem;
+    width: 100%;
+    max-width: 310px;
+  }
+
+  .mouse-scroll-indicator {
+    display: none; /* En móviles el usuario navega por toque o botones */
+  }
+
+  /* Doodles integrados al flujo de la tarjeta en celulares */
+  .doodle-patch {
+    width: 76px !important;
+  }
+  .doodle-rocky-wave {
+    width: 80px !important;
+  }
+  .speech-bubble-rocky {
+    font-size: 0.78rem !important;
+    padding: 0.3rem 0.65rem !important;
+  }
+  .doodle-rocky-fist {
+    width: 105px !important;
+  }
+  .rocky-fist-img {
+    height: 70px !important;
+  }
+
+  /* Galería de Recuerdos en 1 Columna Cómoda */
+  .gallery-card {
+    padding: 1.4rem 0.75rem 1.2rem 0.75rem !important;
+    max-height: calc(100dvh - 120px) !important;
+  }
+
+  /* Dedicatoria en Hoja en Pantallas Móviles */
+  .letter-card {
+    padding: 1.4rem 0.65rem 1.2rem 0.65rem !important;
+    max-height: calc(100dvh - 120px) !important;
+  }
+
+  .letter-sheet {
+    padding: 2.6rem 1.1rem 2.5rem 2.2rem;
+    line-height: 28px;
+    background-color: #faf6ee !important;
+    background-image: 
+      repeating-linear-gradient(
+        transparent,
+        transparent 27px,
+        rgba(180, 140, 100, 0.22) 27px,
+        rgba(180, 140, 100, 0.22) 28px
+      ),
+      linear-gradient(180deg, #fffefb 0%, #f7f0e1 100%) !important;
+  }
+
+  .letter-sheet::before {
+    left: 18px;
+  }
+
+  .letter-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    font-size: 1rem;
+  }
+
+  .letter-recipient {
+    font-size: 1.85rem;
+  }
+
+  .letter-lead-handwritten {
+    font-size: 1.15rem;
+  }
+
+  .letter-body-p {
+    font-size: 1.22rem;
+    line-height: 28px;
+    padding-left: 0.2rem;
+  }
+
+  .badge-title {
+    font-size: 1rem;
+  }
+
+  .letter-highlight-banner {
+    padding: 1rem 1.1rem;
+    gap: 0.5rem;
+  }
+
+  .banner-quote-text {
+    font-size: 1.15rem;
+  }
+
+  .banner-quote-icon {
+    font-size: 2rem;
+  }
+
+  .letter-ps-box {
+    font-size: 1.15rem;
+    padding: 0.75rem 0.95rem;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .letter-closing-container {
+    gap: 1.2rem;
+    margin-top: 1.8rem;
+  }
+
+  .letter-signature {
+    font-size: 2.6rem !important;
+  }
+
+  .letter-wax-seal {
+    width: 64px;
+    height: 64px;
+  }
+
+  .seal-outer-rim {
+    width: 50px;
+    height: 50px;
+  }
+
+  .seal-heart {
+    font-size: 1.2rem !important;
+  }
+
+  .seal-motto {
+    font-size: 0.38rem !important;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    max-width: 285px;
+    margin: 1.2rem auto 0 auto;
+  }
+
+  .polaroid-item {
+    padding: 10px 10px 18px 10px !important;
+  }
+
+  .polaroid-item:nth-child(odd) {
+    transform: rotate(-1.5deg);
+  }
+
+  .polaroid-item:nth-child(even) {
+    transform: rotate(1.5deg);
+  }
+
+  /* Feedback de toque instantáneo en celulares */
+  .polaroid-item:active {
+    transform: scale(0.97) !important;
+    box-shadow: 0 6px 18px rgba(255, 51, 102, 0.4) !important;
+  }
+
+  .polaroid-tape-accent {
+    width: 50px;
+    height: 14px;
+    top: -6px;
+  }
+
+  .polaroid-title {
+    font-size: 1.3rem !important;
+  }
+
+  .polaroid-legend {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Lightbox Modal en Teléfonos */
+  .lightbox-dialog {
+    width: 95vw;
+    max-height: 88dvh;
+    border-radius: 18px;
+  }
+
+  .lightbox-img-box {
+    height: 215px;
+    max-height: 35dvh;
+  }
+
+  .lightbox-details {
+    padding: 1rem 1.1rem 1.1rem 1.1rem;
+  }
+
+  .lightbox-tag {
+    font-size: 0.65rem;
+  }
+
+  .lightbox-title {
+    font-size: 1.3rem;
+    margin: 0.2rem 0 0.4rem 0;
+  }
+
+  .lightbox-legend {
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .lightbox-nav-buttons {
+    margin-top: 0.8rem;
+    gap: 0.5rem;
+    width: 100%;
+    display: flex;
+  }
+
+  .lightbox-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.52rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .lightbox-close-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1.4rem;
+  }
+
+  /* Footer en Móviles */
+  .romantic-footer {
+    height: 36px;
+    padding: 0 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .romantic-footer .footer-item:last-child {
+    display: none; /* Deja solo el mensaje con corazón y el número de pestaña */
+  }
+}
+
+/* Teléfonos Pequeños (iPhone SE, Galaxy mini <= 380px) */
+@media (max-width: 380px) {
+  .card-headline {
+    font-size: 1.25rem;
+  }
+
+  .couple-title {
+    font-size: 1.75rem;
+  }
+
+  .handwritten-quote {
+    font-size: 1.1rem;
+  }
+
+  .sticky-scratch-note {
+    font-size: 0.95rem;
+  }
+
+  .story-tab-btn {
+    font-size: 0.66rem;
+    padding: 0.28rem 0.52rem;
+  }
+
+  .polaroid-title {
+    font-size: 1.2rem !important;
+  }
+
+  .gallery-grid {
+    max-width: 255px;
+  }
+
+  .lightbox-img-box {
+    height: 185px;
+  }
+}
+
+/* Móviles en Modo Horizontal o Pantallas Cortas (<= 680px de altura) */
+@media (max-height: 680px) {
+  .romantic-header {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .journal-wrapper {
+    margin-top: 35px;
+  }
+
+  .journal-card {
+    max-height: calc(100dvh - 90px);
+    padding: 1.4rem 1rem !important;
+  }
+
+  .gallery-card,
+  .letter-card {
+    max-height: calc(100dvh - 90px) !important;
+  }
+
+  .romantic-footer {
+    display: none;
+  }
+
+  .doodle-patch,
+  .doodle-rocky-wave,
+  .doodle-rocky-fist {
+    opacity: 0.6;
+    transform: scale(0.85);
+  }
+}
+
+

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#060814">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Gabriela & David ♡ Project Hail Mary</title>
+  <meta name="description" content="Nuestra historia a través del universo. Para Gabriela con todo mi amor.">
+
+  <!-- Romantic & Warm Fonts: Cormorant Garamond, Caveat (Handwritten), Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Top Romantic Header Bar -->
+  <header class="romantic-header" id="mainHeader">
+    <div class="header-left">
+      <span class="heart-pulse">♥</span>
+      <div class="header-story-title">
+        <span class="handwritten-subtitle">Nuestra historia en las estrellas</span>
+        <span class="couple-tag">GABRIELA & DAVID</span>
+      </div>
+    </div>
+
+    <!-- Visible Tabs Bar (Todas las Pestañas Visibles) -->
+    <nav class="story-tabs-bar" id="storyTabsBar" aria-label="Pestañas de la historia">
+      <button class="story-tab-btn active" data-act="0">
+        <span class="tab-icon">🚀</span>
+        <span class="tab-title">1. El Comienzo</span>
+      </button>
+      <button class="story-tab-btn" data-act="1">
+        <span class="tab-icon">✨</span>
+        <span class="tab-title">2. Luz Cálida</span>
+      </button>
+      <button class="story-tab-btn" data-act="2">
+        <span class="tab-icon">🪐</span>
+        <span class="tab-title">3. Nosotros</span>
+      </button>
+      <button class="story-tab-btn" data-act="3">
+        <span class="tab-icon">♥</span>
+        <span class="tab-title">4. Gabriela & David</span>
+      </button>
+      <button class="story-tab-btn" data-act="4">
+        <span class="tab-icon">📸</span>
+        <span class="tab-title">5. Álbum de Fotos</span>
+      </button>
+      <button class="story-tab-btn" data-act="5">
+        <span class="tab-icon">💌</span>
+        <span class="tab-title">6. Mi Dedicatoria</span>
+      </button>
+    </nav>
+
+    <div class="header-right">
+
+      <button class="music-capsule-btn" id="audioToggle" aria-label="Música de fondo: A Moment"
+        title="Reproducir 'A Moment' de Project Hail Mary">
+        <div class="music-disc-icon">
+          <span class="disc-core"></span>
+        </div>
+        <div class="music-track-info">
+          <span class="music-track-title" id="audioBtnText">A Moment ♫</span>
+          <span class="music-track-artist">Daniel Pemberton • Hail Mary</span>
+        </div>
+        <div class="sound-bars" id="audioWaves">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+
+      <!-- Audio Element: A Moment by Daniel Pemberton -->
+      <audio id="bgAudio" loop preload="auto" src="assets/music/a_moment.mp3">
+        <source src="assets/music/a_moment.mp3" type="audio/mp4">
+        <source src="assets/music/a_moment.mp3" type="audio/mpeg">
+        <source src="assets/music/a_moment.m4a" type="audio/mp4">
+      </audio>
+    </div>
+  </header>
+
+
+  <!-- Main Viewport Stage -->
+  <main class="fixed-stage" id="stage">
+
+    <!-- Canvas: Warm Stars & Stardust -->
+    <canvas id="starsCanvas" class="stage-canvas stars-canvas"></canvas>
+
+    <!-- Background Cinematic Layers (From Project Hail Mary) -->
+    <div class="cinema-layer layer-cosmos active" id="layerCosmos">
+      <div class="ambient-nebula-glow"></div>
+    </div>
+
+    <div class="cinema-layer layer-astrophage" id="layerAstrophage">
+      <img src="assets/images/astrophage_red.png" alt="Project Hail Mary - Astrophage" class="film-frame img-red">
+      <div class="warm-red-vignette"></div>
+    </div>
+
+    <div class="cinema-layer layer-tauceti" id="layerTauceti">
+      <img src="assets/images/tau_ceti_green.jpg" alt="Project Hail Mary - Tau Ceti" class="film-frame img-green">
+      <div class="warm-emerald-vignette"></div>
+    </div>
+
+    <!-- Canvas: Astrophage Glowing Particles & Fireflies -->
+    <canvas id="astrophageCanvas" class="stage-canvas astrophage-canvas"></canvas>
+
+    <!-- Atmospheric Textures -->
+    <div class="dream-halo"></div>
+    <div class="analog-grain"></div>
+
+    <!-- ================================================================
+         ROMANTIC JOURNAL CARDS (Scrollytelling Content)
+         ================================================================ -->
+    <div class="journal-wrapper" id="journalWrapper">
+
+      <!-- Acto 1: Aquel Día -->
+      <article class="journal-card act-1 visible" id="act1">
+        <div class="card-tape"></div>
+
+        <!-- Doodle 1: Parche de la misión con cinta y nota manuscrita -->
+        <div class="card-doodle doodle-patch" id="doodlePatch" data-sound="assets/images/sonidos/1.wav"
+          title="Toca para escuchar">
+          <div class="washi-tape tape-top"></div>
+          <img src="assets/images/1.png" alt="Parche de la misión Project Hail Mary" class="sticker-img patch-img">
+          <div class="handwritten-note note-patch">
+            <span class="arrow-doodle">⤷</span>
+            <p>Nuestra primera película juntos <br><small>Y tambien nuestra primera salida</small></p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <div class="stamp-tag">EL COMIENZO</div>
+        <h1 class="card-headline">David say David will die. Gaby fix.</h1>
+        <p class="card-lead">
+          Dicen que el espacio es frío y está lleno de silencios eternos. Aquel dia el espacio se sentia calido y lo mas
+          especial es que me sentia en casa, pues estaba contigo.
+        </p>
+        <div class="handwritten-quote">
+          <span class="quote-mark">“</span>
+          <span>Entre billones de estrellas y casualidades del destino, encontrarte fue mi mayor fortuna.</span>
+          <span class="quote-mark">”</span>
+        </div>
+
+        <div class="card-footer-nav">
+          <button class="nav-next-step-btn" data-goto="1">
+            <span>Mi luz infraroja</span>
+            <span class="btn-arrow">→</span>
+          </button>
+
+        </div>
+      </article>
+
+      <!-- Acto 2: La Chispa & Rocky -->
+      <article class="journal-card act-2" id="act2">
+        <div class="card-tape"></div>
+
+        <!-- Doodle 2: Rocky saludando con bocadillo de diálogo sonoro -->
+        <div class="card-doodle doodle-rocky-wave" id="doodleRockyWave" data-sound="assets/images/sonidos/laluz.wav"
+          title="Toca para escuchar">
+          <div class="speech-bubble-rocky">
+            <span class="bubble-chord">♫ ♩ ♪</span>
+            <p>«¡Amaze, amaze, amaze!»</p>
+            <span class="bubble-sub">Happy, happy, happy! ♥</span>
+          </div>
+          <img src="assets/images/2.png" alt="Rocky saludando" class="sticker-img rocky-wave-img">
+          <div class="handwritten-note note-rocky">
+            <p>Tú eres mi Rocky en este universo 🪐</p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <div class="stamp-tag tag-crimson">ACTO II • EL ASTROFAGO</div>
+        <h2 class="card-headline headline-crimson">Como una luz cálida en medio de la oscuridad.</h2>
+        <p class="card-lead">
+          Igual que en la nave cuando todo parecía perdido y apareció aquella chispa roja llena de vida... conocerte
+          encendió cada rincón de mi mundo.
+        </p>
+        <p class="card-body-text">
+          Y como Grace y Rocky comunicándose a través de pequeños golpes en el cristal y notas musicales, nosotros
+          encontramos nuestro propio idioma: nuestras bromas, nuestras risas y esa forma de ser nosotros que solo tu y
+          yo entendemos. Siempre juntos y aunque las dificultades se hagan presentes seguimos amandonos.
+        </p>
+        <div class="sticky-scratch-note">
+          <span class="pin-icon">📌</span>
+          <p>«Amaze, amaze, amaze... qué increíble es tenerte en mi vida.»</p>
+        </div>
+
+        <div class="card-footer-nav">
+          <div class="nav-button-group">
+            <button class="nav-prev-step-btn" data-goto="0">← Anterior</button>
+            <button class="nav-next-step-btn" data-goto="2">
+              <span>Mi confidente</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Acto 3: La Nebulosa Esmeralda -->
+      <article class="journal-card act-3" id="act3">
+        <div class="card-tape"></div>
+
+        <!-- Doodle 3: Rocky Figurine Cheering / Fist Bump -->
+        <div class="card-doodle doodle-rocky-fist" id="doodleRockyFist"
+          data-sound="assets/images/sonidos/teamohacialasestrellas.wav" title="Toca para escuchar">
+          <div class="polaroid-frame">
+            <div class="washi-tape tape-angle"></div>
+            <img src="assets/images/3.png" alt="Rocky celebrando" class="sticker-img rocky-fist-img">
+            <span class="polaroid-caption">Fist my Bump</span>
+          </div>
+          <div class="handwritten-note note-fist">
+            <p>¡Dream team tu y yo mamasa!</p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <!-- Doodle 4: Gatitos besándose (Sahur) -->
+        <div class="card-doodle doodle-sahur" id="doodleSahur" data-sound="assets/images/sonidos/sintiestoytriste.wav"
+          title="Toca para escuchar">
+          <div class="polaroid-frame frame-tilt-right">
+            <div class="washi-tape tape-pink"></div>
+            <img src="assets/images/sahur.jpg" alt="Gatitos tiernos" class="doodle-photo-img">
+            <span class="polaroid-caption">Mucho amor por aquí</span>
+          </div>
+          <div class="handwritten-note note-sahur">
+            <p>Nosotros siempre juntitos</p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <div class="stamp-tag tag-emerald">NOSOTROS</div>
+        <h2 class="card-headline headline-emerald">Contigo, el universo siempre es hermoso.</h2>
+        <p class="card-lead">
+          Asomarse a la atmósfera de tu mundo desconocido es como asomarme a lo que construimos cada día: un lugar
+          seguro, feliz para ambos, y a pesar de lo dificil que es a veces poder estas tranquilos juntos.
+        </p>
+        <p class="card-body-text">
+          No importa cuán desconocido sea el camino o qué desafíos haya por delante; mientras sea contigo, cualquier
+          rincón del cosmos se siente como mi verdadero hogar y eso me hace quererte aun mas.
+        </p>
+        <div class="love-pill-box">
+          <span>🚀 Tú eres mi copiloto favorita</span>
+        </div>
+
+        <div class="card-footer-nav">
+          <div class="nav-button-group">
+            <button class="nav-prev-step-btn" data-goto="1">← Anterior</button>
+            <button class="nav-next-step-btn" data-goto="3">
+              <span>Siguiente: Gabriela & David</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Acto 4: Gabriela & David -->
+      <article class="journal-card act-4" id="act4">
+        <div class="card-tape"></div>
+
+        <!-- Doodle 5: Dinosaurios abrazados (Izquierda) -->
+        <div class="card-doodle doodle-dinos" id="doodleDinos" data-sound="assets/images/sonidos/davidamagaby.wav"
+          title="Toca para escuchar">
+          <div class="polaroid-frame frame-tilt-left">
+            <div class="washi-tape tape-gold"></div>
+            <img src="assets/images/dinos.jpg" alt="Abrazo de dinosaurios" class="doodle-photo-img">
+            <span class="polaroid-caption">Somos estos</span>
+          </div>
+          <div class="handwritten-note note-dinos">
+            <p>El abrazo más cálido de todos</p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <!-- Doodle 6: Parejita con lacito y gorra (Derecha) -->
+        <div class="card-doodle doodle-couple" id="doodleCouple" data-sound="assets/images/sonidos/daviddariatodo.wav"
+          title="Toca para escuchar">
+          <div class="polaroid-frame frame-tilt-right">
+            <div class="washi-tape tape-teal"></div>
+            <img src="assets/images/34.jpg" alt="Tú y yo" class="doodle-photo-img">
+            <span class="polaroid-caption">Tú & Yo ✨</span>
+          </div>
+          <div class="handwritten-note note-couple">
+            <p>En nuestra propia sintonía</p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <div class="stamp-tag tag-gold">EL TUNG DE MI SAHUR</div>
+        <h2 class="couple-title">Gabriela & David</h2>
+        <div class="handwritten-title-sub">
+          <span>Para la persona que ilumina mi universo entero</span>
+        </div>
+        <p class="card-lead final-lead">
+          Esta primera parada es solo el inicio de todo lo que quiero recordarte hoy. Porque cada foto, cada fecha y
+          cada risa a tu lado merece ser guardada para siempre.
+        </p>
+
+        <div class="chapter-action-box">
+          <button class="romantic-portal-btn" id="nextChapterBtn" data-goto="4">
+            <span class="btn-sparkle">✦</span>
+            <span class="btn-text">Ver Nuestra Galería de Recuerdos 📸</span>
+            <span class="btn-sparkle">✦</span>
+          </button>
+          <p class="small-whisper">Toca aquí para continuar a nuestras fotos</p>
+        </div>
+
+        <div class="card-footer-nav" style="margin-top: 1rem;">
+          <div class="nav-button-group">
+            <button class="nav-prev-step-btn" data-goto="2">← Volver a Nosotros</button>
+            <button class="nav-next-step-btn" data-goto="4">
+              <span>Ir a la Galería de Fotos</span>
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Acto 5: Galería de Recuerdos -->
+      <article class="journal-card act-5 gallery-card" id="act5">
+        <div class="card-tape"></div>
+
+        <!-- Doodle 7: Meme Cristiano Ronaldo & Speed (Elegantes) -->
+        <div class="card-doodle doodle-speed" id="doodleSpeed" data-sound="assets/images/sonidos/decepcionado.wav"
+          title="Toca para escuchar">
+          <div class="polaroid-frame frame-tilt-right">
+            <div class="washi-tape tape-gold"></div>
+            <img src="assets/images/ella y yo.jpg" alt="Nosotros bien formales" class="doodle-photo-img">
+            <span class="polaroid-caption">Responsabilidad para nuestro hijo</span>
+          </div>
+          <div class="handwritten-note note-speed">
+            <p>Por favor</p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <!-- Contenedor con Scroll Interno para el contenido de la Galería -->
+        <div class="card-scroll-viewport gallery-scroll-viewport">
+          <div class="stamp-tag tag-gallery">ACTO V • NUESTRO ÁLBUM DE FOTOS</div>
+          <h2 class="card-headline headline-gallery">Pedacitos de Nuestra Historia</h2>
+          <p class="card-lead">
+            Cada fotografía guarda un instante que jamás olvidaré. Pasa el ratón por cada una o tócala para verla en
+            detalle.
+          </p>
+
+          <!-- Interactive Polaroid Gallery Grid -->
+          <div class="gallery-grid" id="galleryGrid">
+
+            <!-- Polaroid 1: Primera foto juntos -->
+            <div class="polaroid-item" data-index="0" data-img="assets/images/primerafotojuntos.jpeg"
+              data-title="Nuestra primera foto juntos" data-date="MOMENTO 01 // EL INICIO"
+              data-legend="Ese primer día en que nos tomamos una foto juntos... quién diría que estábamos empezando la historia más hermosa de nuestras vidas.">
+              <div class="polaroid-tape-accent"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/images/primerafotojuntos.jpeg" alt="Nuestra primera foto juntos" class="polaroid-thumb"
+                  style="object-position: center 35%;">
+                <div class="polaroid-glare"></div>
+                <span class="polaroid-fav-btn" title="Me encanta">♥</span>
+              </div>
+              <div class="polaroid-meta">
+                <span class="polaroid-date">MOMENTO 01 // EL INICIO</span>
+                <h3 class="polaroid-title">Nuestra primera foto juntos</h3>
+                <p class="polaroid-legend">Ese primer día en que nos tomamos una foto en las escaleras del auditorio
+                  quien lo diria jdskjsdkjsd (Nelson es muy importante ahi)</p>
+              </div>
+            </div>
+
+            <!-- Polaroid 2: Felices juntos -->
+            <div class="polaroid-item" data-index="1" data-img="assets/images/felices.jpeg"
+              data-title="Sonrisas que iluminan todo" data-date="MOMENTO 02 // PURA FELICIDAD"
+              data-legend="No necesitábamos un motivo especial: cualquier tarde se volvía mágica y perfecta solo por tener tu sonrisa a mi lado.">
+              <div class="polaroid-tape-accent"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/images/felices.jpeg" alt="Sonrisas bajo el cielo" class="polaroid-thumb"
+                  style="object-position: center 30%;">
+                <div class="polaroid-glare"></div>
+                <span class="polaroid-fav-btn" title="Me encanta">♥</span>
+              </div>
+              <div class="polaroid-meta">
+                <span class="polaroid-date">MOMENTO 02 // PURA FELICIDAD</span>
+                <h3 class="polaroid-title">Canchita de basque</h3>
+                <p class="polaroid-legend">Ahi tabamos nosotros con el celu de hiromi pa tomar foticos obviamente que
+                  resaltaran lo bien que nos veiamos juntos</p>
+              </div>
+            </div>
+
+            <!-- Polaroid 3: Patitos en Roblox -->
+            <div class="polaroid-item" data-index="2" data-img="assets/images/patos.jpeg"
+              data-title="Los patitos del multiverso" data-date="MOMENTO 03 // JUGANDO JUNTOS"
+              data-legend="Tardes enteras de risas, bromas y complicidad jugando en nuestro propio mundo. ¡El mejor equipo y los mejores patos de todos!">
+              <div class="polaroid-tape-accent"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/images/patos.jpeg" alt="Patitos jugando juntos" class="polaroid-thumb"
+                  style="object-position: center center;">
+                <div class="polaroid-glare"></div>
+                <span class="polaroid-fav-btn" title="Me encanta">♥</span>
+              </div>
+              <div class="polaroid-meta">
+                <span class="polaroid-date">MOMENTO 03 // JUGANDO JUNTOS</span>
+                <h3 class="polaroid-title">Los patos de la mangangua</h3>
+                <p class="polaroid-legend">No hay nada que decir, jugando roblox y bueno de alguna manera hay que cubrir
+                  el tiempo que no nos podemos ver, pero nos sentimos tan cerca</p>
+              </div>
+            </div>
+
+            <!-- Polaroid 4: Cine espacial -->
+            <div class="polaroid-item" data-index="3" data-img="assets/images/u.jpeg"
+              data-title="Viajando hacia las estrellas" data-date="MOMENTO 04 // UNIVERSO COMPARTIDO"
+              data-legend="Viendo mundos y galaxias en la pantalla grande, soñando con el cosmos como Grace y Rocky explorando Tau Ceti juntos.">
+              <div class="polaroid-tape-accent"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/images/u.jpeg" alt="En el cine bajo las estrellas" class="polaroid-thumb"
+                  style="object-position: center center;">
+                <div class="polaroid-glare"></div>
+                <span class="polaroid-fav-btn" title="Me encanta">♥</span>
+              </div>
+              <div class="polaroid-meta">
+                <span class="polaroid-date">MOMENTO 04 // UNIVERSO COMPARTIDO</span>
+                <h3 class="polaroid-title">Viajando hacia las estrellas</h3>
+                <p class="polaroid-legend">Y como olvidar el dia que decidimos hacer nuestra esa pelicula, que solo
+                  nosotros entendiamos, nojoda no te abrace ese dia </p>
+              </div>
+            </div>
+
+            <!-- Polaroid 5: Mirada cómplice (Seguroooo) -->
+            <div class="polaroid-item" data-index="4" data-img="assets/images/Seguroooo.jpeg"
+              data-title="Esa mirada que lo dice todo" data-date="MOMENTO 05 // COMPLICIDAD ÚNICA"
+              data-legend="Cuando un solo gesto o una mirada cómplice bastan para hacernos reír y entendernos sin decir una sola palabra.">
+              <div class="polaroid-tape-accent"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/images/Seguroooo.jpeg" alt="Nuestras miradas cómplices" class="polaroid-thumb"
+                  style="object-position: center 30%;">
+                <div class="polaroid-glare"></div>
+                <span class="polaroid-fav-btn" title="Me encanta">♥</span>
+              </div>
+              <div class="polaroid-meta">
+                <span class="polaroid-date">MOMENTO 05 // Seguro???</span>
+                <h3 class="polaroid-title">Nos convertimos en el segurooo???</h3>
+                <p class="polaroid-legend">Cuando nos preguntamos el uno al otro seguroooooo???.</p>
+              </div>
+            </div>
+
+            <!-- Polaroid 6: Meme Cristiano & Speed (Bien formales) -->
+            <div class="polaroid-item" data-index="5" data-img="assets/images/ella y yo.jpg"
+              data-title="Bien formales tú y yo" data-date="MOMENTO 06 // RISAS INFINITAS"
+              data-legend="Porque el amor más real también es reírnos de todo, compartir los mejores memes y saber que a tu lado la vida siempre es divertida.">
+              <div class="polaroid-tape-accent"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/images/nosotros.jpeg" alt="Bien formales tú y yo" class="polaroid-thumb"
+                  style="object-position: center 35%;">
+                <div class="polaroid-glare"></div>
+                <span class="polaroid-fav-btn" title="Me encanta">♥</span>
+              </div>
+              <div class="polaroid-meta">
+                <span class="polaroid-date">MOMENTO 06 // Me embarazaste</span>
+                <h3 class="polaroid-title">No te hagas la walberta me dejaste embarazado</h3>
+                <p class="polaroid-legend">Te amo con locura a pesar de que no te quieras hacer responsable de la cria
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="card-footer-nav" style="margin-top: 1.8rem;">
+            <div class="nav-button-group">
+              <button class="nav-prev-step-btn" data-goto="3">← Volver a Gabriela & David</button>
+              <button class="nav-next-step-btn" data-goto="5">
+                <span>Me Quiero sincerar</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================================================================
+           ACTO 6: DEDICATORIA EN UNA HOJA (CARTA PERSONAL)
+           ================================================================ -->
+      <article class="journal-card act-6 letter-card" id="act6">
+        <div class="card-tape"></div>
+
+        <!-- Doodle 8: Mokujin y novia (Cuidándote siempre) -->
+        <div class="card-doodle doodle-tung" id="doodleTung" data-sound="assets/images/sonidos/davidamagaby.wav"
+          title="Toca para escuchar">
+          <div class="polaroid-frame frame-tilt-left">
+            <div class="washi-tape tape-pink"></div>
+            <img src="assets/images/tung.jpg" alt="Cuidándote siempre" class="doodle-photo-img">
+            <span class="polaroid-caption">Cuidándote siempre ♡</span>
+          </div>
+          <div class="handwritten-note note-tung">
+            <p>En cualquier rincón cósmico</p>
+            <span class="doodle-sound-tag">♫ Tócame</span>
+          </div>
+        </div>
+
+        <!-- Contenedor con Scroll Interno para la Carta -->
+        <div class="card-scroll-viewport letter-scroll-viewport">
+          <div class="stamp-tag tag-gold">ACTO VI • MI DEDICATORIA</div>
+
+          <!-- Hoja de Carta / Papel con Estilo Manuscrito -->
+          <div class="letter-sheet" id="letterSheet">
+            <!-- Cinta Washi decorativa que sujeta la hoja -->
+            <div class="letter-tape-top"></div>
+
+            <!-- Cabecera de la Hoja: Lugar, Fecha y Sello Romántico -->
+            <div class="letter-header-row">
+              <div class="letter-origin">
+                <span class="letter-pin-icon">📍</span>
+                <span class="letter-origin-text">En algun lugar de Macanao..</span>
+              </div>
+              <div class="letter-date-box">
+                <span class="letter-calendar-icon">📅</span>
+                <span class="letter-date-text">Septiembre, 2026</span>
+              </div>
+            </div>
+
+            <!-- Saludo Principal -->
+            <div class="letter-salutation-box">
+              <h2 class="letter-recipient">Querida Gabriela,</h2>
+              <p class="letter-lead-handwritten">Esta dedicatoria es solo para ti, de mi puño y teclado:</p>
+            </div>
+
+            <div class="letter-divider-line">
+              <span class="divider-gem">✦</span>
+            </div>
+
+            <!-- ============================================================
+                 SECCIÓN 1: EL INICIO DE TODO
+                 (Edita el texto dentro de <p> con tus propias palabras)
+                 ============================================================ -->
+            <section class="letter-section">
+              <div class="letter-section-badge">
+                <span class="badge-num">1</span>
+                <h3 class="badge-title">Quiero ser una persona especial para ti</h3>
+              </div>
+              <p class="letter-body-p">
+                Sabes mi amor a pesar de que solo tenemos 6 meses saliendo quiero ser una persona especial para ti, la
+                persona a la que puedas contarle cualquier cosa, la persona con la que siempre puedas reírte, la persona
+                con la que siempre puedas contar en los momentos tristes y felices, la persona que siempre estará ahí
+                para ti aunque el mundo te falle, pues quiero ser tu lugar seguro y el alma en la que puedas depositar
+                tu confianza.
+              </p>
+            </section>
+
+            <!-- ============================================================
+                 SECCIÓN 2: NUESTRA COMPLICIDAD & PEQUEÑAS COSAS
+                 (Edita el texto dentro de <p> con tus propias palabras)
+                 ============================================================ -->
+            <section class="letter-section">
+              <div class="letter-section-badge">
+                <span class="badge-num">2</span>
+                <h3 class="badge-title">Te amo con locura</h3>
+              </div>
+              <p class="letter-body-p">
+                Te amo con locura mi amor eres la mujer de mi vida, y de mis atomos, te amo con toda el alma, eres una
+                persona increible, maravillosa, tan buena que no se si sea digno de ti pero quiero intentar todos los
+                dias que vienen en nuestra historia ser digno de ti y que puedas sentirte orgullosa de mi como yo lo
+                estoy de ti y de mi relación contigo.
+              </p>
+            </section>
+
+            <!-- ============================================================
+                 SECCIÓN 3: LO QUE ADMIRO DE TI
+                 (Edita el texto dentro de <p> con tus propias palabras)
+                 ============================================================ -->
+            <section class="letter-section">
+              <div class="letter-section-badge">
+                <span class="badge-num">3</span>
+                <h3 class="badge-title">Lo que amo de ti</h3>
+              </div>
+              <p class="letter-body-p">
+                Amo tu sonrisa, tus gestos, tus locuras, amo cuando me abrazas y me besas, amo cuando me coges la mano,
+                amo
+                tu nariz, amo tus ojos, amo tu boca, amo tu cuerpo, amo cada parte de ti, amo cada momento que paso a tu
+                lado, amo nuestra historia, amo nuestra relación, amo todo de ti mi amor, te amo con locura.
+              </p>
+            </section>
+
+            <!-- ============================================================
+                 SECCIÓN 4: CITA / FRASE DESTACADA ENMARCADA
+                 ============================================================ -->
+            <div class="letter-highlight-banner">
+              <span class="banner-quote-icon">“</span>
+              <blockquote class="banner-quote-text">
+                " Te amo como tung tung ama a su bate, pues eres el tung de mi sahur, eres mi confidente, mi amiga y la
+                mujer de mi mundo, quiero ser un gran novio, y no solo eso quiero ser la persona en la que puedas
+                confiar ciegamente y a la que le puedas contar todo.
+              </blockquote>
+              <span class="banner-heart">♥</span>
+            </div>
+
+            <!-- ============================================================
+                 SECCIÓN 5: MI PROMESA PARA EL FUTURO
+                 (Edita el texto dentro de <p> con tus propias palabras)
+                 ============================================================ -->
+            <section class="letter-section">
+              <div class="letter-section-badge">
+                <span class="badge-num">4</span>
+                <h3 class="badge-title">Mi promesa y lo que viene</h3>
+              </div>
+              <p class="letter-body-p">
+                Te cuidare, te respetare y sobretodo te valorare cada dia que que viene por delante, gracias por estos
+                6 meses inolvidables, porque a pesar de todos los altos y bajos que hemos pasado juntos, siempre has
+                estado ahi, y fue en parte mi error no darte el lugar que debias, el lugar que te mereces y el lugar que
+                solo te puede pertenecer a ti, que es mi corazon, la mitad de mi alma y de mi ser, te amo con locura mi
+                amor.
+              </p>
+            </section>
+
+            <!-- ============================================================
+                 SECCIÓN 6: POSTDATA (P.D.)
+                 ============================================================ -->
+            <div class="letter-ps-box">
+              <span class="ps-tag">Peticion importante:</span>
+              <p class="ps-content">
+                Quiero que me des una oportunidad mas, te pido perdon por todo el daño que te he causado, y prometo que
+                te cuidare siempre, pues mis sentimientos por ti son unicos y verdaderos, y no quiero dejar perderlos
+                por culpa de mis actitudes, ante todo el respeto que te tengo y lo mucho que significas para mi, te pido
+                me des otra oportunidad, y se que formalizar la relacion no arreglara los problemas, pero quiero hacerlo
+                quiero pedirte que seas mi compa;era, no solo mi novia, pues novia es solo una palabra y no se compara a
+                lo que tu significas para mi...
+
+              </p>
+            </div>
+
+            <!-- ============================================================
+                 DESPEDIDA & FIRMA CON SELLO DE LACRE
+                 ============================================================ -->
+            <div class="letter-closing-container">
+              <div class="letter-closing-content">
+                <p class="letter-signoff">Siempre tuyo y con todo mi amor,</p>
+                <div class="letter-signature">David ♡</div>
+              </div>
+
+              <div class="letter-wax-seal" title="Sello de amor para siempre">
+                <div class="seal-outer-rim">
+                  <div class="seal-inner-circle">
+                    <span class="seal-heart">♥</span>
+                    <span class="seal-motto">PARA SIEMPRE</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Doblez decorativo en la esquina inferior de la hoja -->
+            <div class="sheet-corner-fold" aria-hidden="true"></div>
+          </div>
+
+          <!-- Botones de Navegación de la Hoja -->
+          <div class="card-footer-nav" style="margin-top: 1.8rem;">
+            <div class="nav-button-group">
+              <button class="nav-prev-step-btn" data-goto="4">← Volver a la Galería</button>
+              <button class="nav-next-step-btn" data-goto="0">
+                <span>Volver al Inicio ↺</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Sweet Bottom Bar -->
+    <footer class="romantic-footer">
+      <div class="footer-item">
+        <span class="footer-heart">♥</span>
+        <span>Hecho con todo mi amor para ti</span>
+      </div>
+      <div class="footer-item scroll-meter" id="scrollMeterText">
+        Pestaña activa: 1 de 6
+      </div>
+      <div class="footer-item">
+        <span>Nuestra historia apenas comienza ✦</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Lightbox Modal for Full View -->
+  <div class="lightbox-backdrop" id="lightboxModal" aria-hidden="true">
+    <div class="lightbox-dialog">
+      <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Cerrar foto">&times;</button>
+      <div class="lightbox-content">
+        <div class="lightbox-img-box">
+          <img src="" alt="Recuerdo ampliado" id="lightboxImg" class="lightbox-image">
+        </div>
+        <div class="lightbox-details">
+          <span class="lightbox-tag" id="lightboxTag">MOMENTO // RECUERDO</span>
+          <h3 class="lightbox-title" id="lightboxTitle">Título del Recuerdo</h3>
+          <p class="lightbox-legend" id="lightboxLegend">Leyenda descriptiva del momento.</p>
+          <div class="lightbox-nav-buttons">
+            <button class="lightbox-btn" id="lightboxPrevBtn">← Anterior</button>
+            <button class="lightbox-btn" id="lightboxNextBtn">Siguiente →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
