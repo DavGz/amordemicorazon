@@ -17,10 +17,82 @@
     href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 
 <body>
+
+  <!-- ================================================================
+       PANTALLA INICIAL: SOBRE ROMÁNTICO 3D // PRIMERA SECCIÓN "ÁBREME"
+       ================================================================ -->
+  <aside class="envelope-welcome-overlay" id="envelopeWelcomeOverlay" aria-label="Carta especial para Gabriela">
+    <div class="envelope-overlay-backdrop"></div>
+    <div class="envelope-ambient-glow"></div>
+    <div class="envelope-floating-hearts" id="envelopeFloatingHearts"></div>
+
+    <div class="envelope-hero-content">
+      <div class="envelope-badge">
+        <span class="badge-sparkle">✦</span>
+        <span>De David con todo mi amor</span>
+        <span class="badge-sparkle">✦</span>
+      </div>
+
+      <h1 class="envelope-hero-title">Tengo algo en el corazón que quiero decirte...</h1>
+      <p class="envelope-hero-subtitle">Una carta sincera esperando por ti</p>
+
+      <!-- Envelope 3D Container -->
+      <div class="envelope-3d-scene" id="envelope3dScene">
+        <div class="envelope-card-wrapper" id="envelopeCardWrapper" role="button" tabindex="0" aria-label="Abrir carta para Gabriela">
+          <!-- Washi tape decorativo en el sobre -->
+          <div class="envelope-washi-tape"></div>
+
+          <!-- Base Trasera del Sobre -->
+          <div class="envelope-pocket-back"></div>
+
+          <!-- Carta Interior que se desliza al abrirse -->
+          <div class="envelope-letter-paper" id="envelopeLetterPaper">
+            <div class="letter-paper-preview">
+              <span class="letter-preview-heart">♥</span>
+              <p class="letter-preview-heading">Mi amada Gabriela,</p>
+              <div class="letter-preview-lines">
+                <span></span><span></span><span></span>
+              </div>
+              <p class="letter-preview-quote">"Siempre tú, en cada rincón de mi universo..."</p>
+            </div>
+          </div>
+
+          <!-- Bolsillo Delantero del Sobre -->
+          <div class="envelope-pocket-front"></div>
+
+          <!-- Solapa Superior 3D -->
+          <div class="envelope-flap" id="envelopeFlap"></div>
+
+          <!-- Sello de Lacre Romántico -->
+          <div class="envelope-wax-seal" id="envelopeWaxSeal" title="Sello de amor">
+            <div class="seal-ring">
+              <span class="seal-heart">♥</span>
+              <span class="seal-text">PARA TI</span>
+            </div>
+          </div>
+
+          <!-- Etiqueta manuscrita -->
+          <div class="envelope-handwritten-tag">
+            <span>Para: Gabriela ♡</span>
+          </div>
+        </div>
+
+        <!-- Botón Destacado: Ábreme -->
+        <div class="envelope-action-container">
+          <button class="envelope-abreme-btn" id="openEnvelopeBtn" type="button" aria-label="Abrir carta de David">
+            <span class="btn-heart-pulse">♥</span>
+            <span class="btn-label-text">Ábreme</span>
+            <span class="btn-sparkle-icon">✨</span>
+          </button>
+          <p class="envelope-click-hint">Toca la carta o el botón para abrir</p>
+        </div>
+      </div>
+    </div>
+  </aside>
 
   <!-- Top Romantic Header Bar -->
   <header class="romantic-header" id="mainHeader">
@@ -61,6 +133,11 @@
     </nav>
 
     <div class="header-right">
+      <a href="carta.html" class="header-carta-link" title="Leer la carta especial">
+        <span>💌</span>
+        <span class="carta-text-long">Carta para Gabriela</span>
+        <span class="carta-text-short">Carta</span>
+      </a>
 
       <button class="music-capsule-btn" id="audioToggle" aria-label="Música de fondo: A Moment"
         title="Reproducir 'A Moment' de Project Hail Mary">
@@ -702,7 +779,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 
 </html>

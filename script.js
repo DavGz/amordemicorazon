@@ -800,8 +800,105 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(loop);
   }
 
+  // ==========================================================================
+  // 9. SOBRE ROMÁNTICO INTERACTIVO (PANTALLA DE BIENVENIDA "ÁBREME")
+  // ==========================================================================
+  const envelopeOverlay = document.getElementById('envelopeWelcomeOverlay');
+  const envelopeWrapper = document.getElementById('envelopeCardWrapper');
+  const openEnvelopeBtn = document.getElementById('openEnvelopeBtn');
+  const envelopeWaxSeal = document.getElementById('envelopeWaxSeal');
+
+  // Si la URL contiene ?story=true (usuario regresa desde la carta para ver el álbum)
+  const urlParams = new URLSearchParams(window.location.search);
+  const skipEnvelope = urlParams.get('story') === 'true' || urlParams.get('skip') === '1';
+
+  if (skipEnvelope && envelopeOverlay) {
+    envelopeOverlay.style.display = 'none';
+  }
+
+  let isEnvelopeOpening = false;
+
+  function triggerHeartBurst() {
+    const container = document.getElementById('envelopeFloatingHearts');
+    if (!container) return;
+    const colors = ['#ff3366', '#ff6699', '#f6c065', '#ffffff', '#ff1744'];
+    for (let i = 0; i < 26; i++) {
+      const heart = document.createElement('span');
+      heart.className = 'floating-burst-heart';
+      heart.textContent = Math.random() > 0.35 ? '♥' : '✦';
+      heart.style.left = '50%';
+      heart.style.top = '50%';
+      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 200 + 80;
+      const burstX = Math.cos(angle) * distance;
+      const burstY = Math.sin(angle) * distance - 80;
+      const burstRot = (Math.random() - 0.5) * 140;
+      heart.style.setProperty('--burst-x', `${burstX}px`);
+      heart.style.setProperty('--burst-y', `${burstY}px`);
+      heart.style.setProperty('--burst-rot', `${burstRot}deg`);
+      heart.style.animationDelay = `${Math.random() * 0.15}s`;
+      container.appendChild(heart);
+    }
+  }
+
+  function handleOpenEnvelope(e) {
+    if (e) e.stopPropagation();
+    if (isEnvelopeOpening) return;
+    isEnvelopeOpening = true;
+
+    // 1. Iniciar música de fondo
+    playOfficialTrack();
+    sessionStorage.setItem('bgAudioPlaying', 'true');
+
+    // Estado visual del botón
+    if (openEnvelopeBtn) {
+      openEnvelopeBtn.innerHTML = '<span class="btn-heart-pulse">♥</span> <span class="btn-label-text">Abriendo carta...</span> <span class="btn-sparkle-icon">✨</span>';
+      openEnvelopeBtn.style.opacity = '0.9';
+      openEnvelopeBtn.style.pointerEvents = 'none';
+    }
+
+    // 2. Animar apertura de solapa y deslizamiento de carta
+    if (envelopeWrapper) {
+      envelopeWrapper.classList.add('is-open');
+    }
+
+    // 3. Efecto de partículas de corazones
+    triggerHeartBurst();
+
+    // 4. Transición hacia la nueva vista (carta.html)
+    setTimeout(() => {
+      if (envelopeOverlay) {
+        envelopeOverlay.classList.add('is-hiding');
+      }
+    }, 1350);
+
+    setTimeout(() => {
+      window.location.href = 'carta.html';
+    }, 1600);
+  }
+
+  if (openEnvelopeBtn) {
+    openEnvelopeBtn.addEventListener('click', handleOpenEnvelope);
+  }
+
+  if (envelopeWrapper) {
+    envelopeWrapper.addEventListener('click', handleOpenEnvelope);
+    envelopeWrapper.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleOpenEnvelope();
+      }
+    });
+  }
+
+  if (envelopeWaxSeal) {
+    envelopeWaxSeal.addEventListener('click', handleOpenEnvelope);
+  }
+
   // Initialize
   handleResize();
   goToAct(0);
   loop();
 });
+

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es" class="letter-html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#060814">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Una Carta para Gabriela ♡ David</title>
+  <meta name="description" content="Una carta sincera desde el fondo de mi corazón. Para Gabriela.">
+
+  <!-- Romantic & Warm Fonts: Cormorant Garamond, Caveat (Handwritten), Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=4">
+  <style>
+    html,
+    html.letter-html {
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      height: auto !important;
+      min-height: 100% !important;
+      scroll-behavior: smooth;
+    }
+
+    body,
+    body.letter-page-body {
+      overflow-y: visible !important;
+      overflow-x: hidden !important;
+      height: auto !important;
+      min-height: 100vh !important;
+    }
+  </style>
+</head>
+
+<body class="letter-page-body">
+
+  <!-- Top Romantic Header Bar -->
+  <header class="romantic-header" id="letterHeader">
+    <div class="header-left">
+      <a href="index.html?story=true" class="header-back-home" title="Ver nuestra historia completa">
+        <span class="heart-pulse">♥</span>
+        <div class="header-story-title">
+          <span class="handwritten-subtitle">Nuestra historia en las estrellas</span>
+          <span class="couple-tag">GABRIELA & DAVID</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Quick Navigation in Header -->
+    <nav class="letter-header-nav" aria-label="Navegación de la carta">
+      <a href="index.html" class="header-nav-btn secondary" title="Volver a abrir el sobre">
+        <span>✉</span>
+        <span class="nav-btn-text">Ver Sobre</span>
+      </a>
+      <a href="index.html?story=true" class="header-nav-btn primary" title="Explorar todas nuestras fotos y recuerdos">
+        <span>🚀</span>
+        <span class="nav-btn-text">Nuestra Historia</span>
+      </a>
+    </nav>
+
+    <div class="header-right">
+      <button class="music-capsule-btn" id="letterAudioToggle" aria-label="Música de fondo: A Moment"
+        title="Reproducir 'A Moment' de Project Hail Mary">
+        <div class="music-disc-icon">
+          <span class="disc-core"></span>
+        </div>
+        <div class="music-track-info">
+          <span class="music-track-title" id="letterAudioBtnText">A Moment ♫</span>
+          <span class="music-track-artist">Daniel Pemberton • Hail Mary</span>
+        </div>
+        <div class="sound-bars" id="letterAudioWaves">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </button>
+
+      <!-- Audio Element: A Moment by Daniel Pemberton -->
+      <audio id="letterBgAudio" loop preload="auto" src="assets/music/a_moment.mp3">
+        <source src="assets/music/a_moment.mp3" type="audio/mp4">
+        <source src="assets/music/a_moment.mp3" type="audio/mpeg">
+        <source src="assets/music/a_moment.m4a" type="audio/mp4">
+      </audio>
+    </div>
+  </header>
+
+  <!-- Ambient Cosmic Canvas & Atmosphere -->
+  <canvas id="letterStarsCanvas" class="stage-canvas stars-canvas"></canvas>
+  <div class="letter-ambient-nebula"></div>
+  <div class="letter-candlelight-glow"></div>
+  <div class="dream-halo"></div>
+  <div class="analog-grain"></div>
+
+  <!-- Main Scrollable Letter Viewport -->
+  <main class="letter-page-main">
+    <div class="letter-page-scroll-area">
+
+      <!-- Romantic Letter Sheet (Papel de carta manuscrito) -->
+      <article class="parchment-sheet" id="parchmentSheet">
+        <!-- Cinta Washi decorativa superior -->
+        <div class="parchment-washi-tape tape-top"></div>
+        <div class="parchment-washi-tape tape-corner-left"></div>
+        <div class="parchment-washi-tape tape-corner-right"></div>
+
+        <!-- Encabezado de la Carta: Fecha y Ubicación -->
+        <div class="parchment-header-row">
+          <div class="parchment-origin">
+            <span class="parchment-pin">📍</span>
+          </div>
+          <div class="parchment-date">
+            <span class="parchment-calendar">📅</span>
+            <span>Octubre, 2026</span>
+          </div>
+        </div>
+
+        <!-- Destinataria -->
+        <div class="parchment-salutation-box">
+          <span class="parchment-badge-tag">Se que he obrado mal</span>
+          <h1 class="parchment-recipient">Mi querida Gabriela,</h1>
+          <p class="parchment-intro-whisper">Soy malisimo con las palabras, y la verdad no se ni por donde empezar a
+            expresarte como me siento estos dias:</p>
+        </div>
+
+        <div class="parchment-divider">
+          <span class="divider-gem">✦</span>
+          <span class="divider-gem">♥</span>
+          <span class="divider-gem">✦</span>
+        </div>
+
+        <!-- ================================================================
+             DAVID: AQUÍ ESCRIBES TU CARTA PARA GABRIELA
+             Solo reemplaza el texto entre corchetes con tus propias palabras.
+             Puedes agregar más párrafos <p class="parchment-paragraph"> si lo deseas.
+             ================================================================ -->
+        <div class="parchment-body-content">
+
+          <!-- PÁRRAFO 1 (Párrafo principal / Introducción) -->
+          <p class="parchment-paragraph lead-p">
+            Mi vida es un desastre que puedo decirte, todo se me cae abajo y no se que hacer conmigo mismo, se que no he
+            sido el mejor acompa;ante para ti estos dias, te he decepcionado
+            y no se que hacer tanto con nosotros como conmigo mismo, estos dias he pensando mucho, no me siento
+            orgulloso de las acciones que he cometido, son cosas que
+            deberian haber pasado hace mucho tiempo y que no las afronte como debia, me siento un asco de persona y tu
+            debes pensar lo mismo de mi, he decepcionado a la unica persona que
+            no quisiera perder y eso me duele muchisimo, he pensando en cometer contra mi mismo cosas que jamas se
+            deberian pensar, mi mente esta fuera de lugar y no se que hacer,
+            no tengo a quien recurrir, siento que me estoy ahogando y no puedo salir de esto, no se si merezco una
+            segunda oportunidad, estoy intentando cambiar tanto por mi, como por la maldita mierda que fui al no ser el
+            hombre que tu te mereces,
+            no hay justificacion para mis actos, lo se, pero te lo digo de corazon me duele que me veas asi, me duele
+            que pienses que no puedo cambiar, pero si hay algo que debes saber es que te amo con todo mi corazon, y esa
+            es la unica cosa que no cambiaria de mi, podre cambiar todo, mi forma de ser, mi forma de pensar, vestir y
+            tratar a los demas, pero jamas cambiare la forma que me siento cuando tus ojos se posan sobre los mios y me
+            miran, y es de las mejores sensaciones que he tenido en mi vida.
+          </p>
+
+          <!-- PÁRRAFO 2 -->
+          <p class="parchment-paragraph">
+            Contigo intento ser la mejor version de mi mismo, alguien con el que tu puedas estar tranquila, alguien que
+            te pueda cuidar y respetar como tu te mereces
+            pues se que te he mentido y no te fui honesto en un pasado, no afronte mis acciones como debia y cometi el
+            tonto error de dejarlo estar y no hablar de ello ni contigo ni con nadie, no buscar ayuda, pues sinceramente
+            me he ahogado yo mismo, siento que me hundo en un silencio y en una distancia entre nosotros que yo mismo
+            cause
+            , mi vida estos dias se ha tornado gris, triste, he perdido tantas cosas, y me he sentido tan mal conmigo,
+            que no puedo dejarlo estar sin mas, he intentado buscar las palabras por tantos dias, encontrar una manera
+            de que me perdones, de que sientas que de verdad yo quiero estar aqui contigo, en este instante y en
+            cualquier momento futuro, mi yo de ahora no puede existir sin ti, y se que es patetico decir esto, pero te
+            necesito en mi vida, tanto tiempo huyendo de mis errores, negarme a mis situaciones, y sentir como que mis
+            acciones no estaban afectando a mi alrededor, y ahora mismo sentado y pensando en que podria haber hecho
+            mejor porque si habrian sido una inmensidad de cosas
+            no me siento listo para dejar ir esto, no me siento listo para dejar ir lo que tenemos, gabriela esto es lo
+            mas valioso que tengo en mi vida ahora mismo junto con luno es el lugar donde puedo estar a salvo y sentirme
+            entendido, me defiendo y me ponia en lugar de la victima porque creia que asi lograria defendernos de mis
+            errores, y alejarnos de esos momentos frios y oscuros de mi vida, te escribo esto con la mano en el corazon
+            y con mi mas sincera verdad, y es la verdad de lo que siento por ti te amo, sin ti mi vida, mis
+            pensamientos, mis noches, mis ma;anas se sienten vacias,
+            me siento perdido en este mundo sin ti, en este instante tan problematico que estamos pasando, se que no me
+            puedes perdonar, se que no puedes olvidar lo que hice, y no puedo hacer nada para cambiar lo mal que actue y
+            lo mala persona que fui al no pensar como te sentirias tu, escape y corri de eso, de mis pensamientos y mis
+            ataques hacia mi mismo, no quiero tener con nadie mas lo que nosotros tenemos, no quiero vivir con alguien
+            mas lo que he vivido contigo, se que podemos trabajar en ello, podemos avanzar juntos, aunque sea dificil,
+            no puedo dejar ir a la unica persona que vio lo bueno en mi y yo no supe valorarlo,
+            soy un egoista e idiota pensando que si giraba la vista todo estaria bien, todo estaria correcto, como en
+            las peliculas, pero no era asi, pues me equivoque y fui ciego en lo mal que estaba obrando contigo, cuando
+            tu no te merecias nada de eso, nada de esa parte de mi, tu mereces y merecias lo mejor de mi que podia dar
+            como persona amigo y compa;ero lo poco que podia dar, no me sentia bien conmigo mismo, y no me siento bien
+            ahora no puedo pasar los dias como si nada sin arrepentirme de lo que hice y pedirte perdon por el despojo
+            humano que fui contigo.
+          </p>
+
+          <!-- FRASE O CITA ESPECIAL DESTACADA (Opcional) -->
+          <blockquote class="parchment-quote-box">
+            <span class="quote-symbol">“</span>
+            <p class="quote-text">
+              Se que aun no te puedo dar todo lo que mereces, pero me estoy esforzando porque tu obtengas la mejor parte
+              de mi, no nadie mas, porque yo no le pertenezco a nadie que no seas tu, te amo, amo tus ojos y el resto de
+              tu cara, amo tu sonrisa cuando me ves o te ries de mis estupideces, amo tus frenillos bien pudiera ser
+              carne mechada para vivir por siempre en ellos, amo tu cicatriz en la frente cosa que compartirmos porque
+              yo tambien tengo una, en fin amo a la persona que me miro y decidio creer en mi y apoyarme y te amo a ti
+              como eres en general
+            </p>
+            <span class="quote-heart">♥</span>
+          </blockquote>
+
+          <!-- PÁRRAFO 3 -->
+          <p class="parchment-paragraph">
+            Quiero dar todo mi ser por nosotros y sobre todo por ti, porque eres la mujer de mi vida, eres mi estrella,
+            eres mi rocky tung sahur ballerina nentanyu, juro por todo lo que tengo en mi mano dar todo de mi por ti, no
+            tengo luz pero cuando tenga subire esto y te avisare que revises si el link se cayo, si estas leyendo esto
+            ahora mismo, lo siento, perdoname por lo que he sido, siempre estare para ti, no importa lo que me pase a
+            mi, pues tu me importas un mundo, se que me repito bastante y es porque no se hablar con la gente muy bien,
+            no me generalizo con las personas y huyo de ellas, pero de ti no quiero huir, contigo quiero arreglar todo y
+            sanar las situaciones del pasado, que se que sera dificil y necesitara trabajo en equipo lo se, pero si
+            estoy aqui y no he huido es porque estoy dispuesto hasta dar mi vida por ti, la mitdad de mi todo y si no es
+            eso todo completo, eres la fotografia de mi baron, eres el jimbo de mi ballot, y eres el vale de mi
+            observatorio, jamas encontrare a alguien como tu que me entienda como tu y me ame como tu, sin ti todas las
+            canciones que escucho y pienso en ti no tendran sentido alguno, pues tu eres el sentido de mi vida y
+            existencia, y no quiero sonar egoista pero no quiero que tu seas el sentido de la vida de otro, solo el mio,
+            porque contigo he visto que y he descubierto lo que de verdad es amar a alguien
+          </p>
+
+          <!-- PÁRRAFO 4 (Cierre / Conclusión) -->
+          <p class="parchment-paragraph">
+            Gaby se que he cometido errores y estoy arrepentido de ellos, se que no soy atractivo fisicamente, no soy
+            gracioso a veces y tengo un humor muy rancio, te he decepcionado tambien, pero mi corazon a pesar de lo
+            da;ado que este solo te ama a ti, en mi corazon no hay lugar para mas nadie que tu y mis 3 soplos cerrados,
+            hasta deshidratado pensaba en que te podia decir, este es mi parrafo mas actual, lo escribo hoy dia 15,
+            quiero que me des otra oportuinidad, que nos des otra oportunidad a ambos, podemos salir adelante, eres el
+            astrofago de mi linea petrova
+          </p>
+
+        </div>
+        <!-- ================================================================
+             FIN DE TU CARTA
+             ================================================================ -->
+
+        <!-- Despedida y Firma Manuscrita -->
+        <div class="parchment-signature-area">
+          <div class="signature-details">
+            <p class="signature-signoff">(Si el fondo se ve raro es porque no me quedo como queria lo siento) Siempre
+              tuyo y con todo mi amor,</p>
+            <div class="signature-name">David ♡</div>
+          </div>
+
+          <!-- Sello de Lacre Oficial -->
+          <div class="parchment-wax-seal" title="Sellado con amor eterno">
+            <div class="seal-inner">
+              <span class="seal-heart-icon">♥</span>
+              <span class="seal-motto-text">TE AMO</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones de Acción al Final de la Carta -->
+        <div class="parchment-actions-bar">
+          <a href="index.html?story=true" class="parchment-btn primary-story-btn">
+            <span class="btn-icon">🚀</span>
+            <span>Ver Nuestra Historia en las Estrellas</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="index.html" class="parchment-btn secondary-envelope-btn">
+            <span class="btn-icon">✉</span>
+            <span>Volver a ver el sobre</span>
+          </a>
+        </div>
+
+        <!-- Doblez decorativo en esquina de la hoja -->
+        <div class="parchment-corner-fold" aria-hidden="true"></div>
+      </article>
+
+      <!-- Pie de página romántico -->
+      <footer class="letter-footer">
+        <span>Hecho con todo mi amor para ti • Gabriela & David ✦</span>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="carta.js?v=2"></script>
+</body>
+
+</html>

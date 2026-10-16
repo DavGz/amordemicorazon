@@ -64,16 +64,18 @@ html, body {
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  background: linear-gradient(180deg, rgba(6, 8, 20, 0.95) 0%, rgba(6, 8, 20, 0.4) 80%, transparent 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(6, 8, 20, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 .header-left {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  min-width: 0;
 }
 
 .heart-pulse {
@@ -81,6 +83,7 @@ html, body {
   font-size: 1.35rem;
   filter: drop-shadow(0 0 10px var(--hail-crimson));
   animation: heart-beat 1.6s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 @keyframes heart-beat {
@@ -93,6 +96,7 @@ html, body {
 .header-story-title {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .handwritten-subtitle {
@@ -1992,11 +1996,19 @@ body.viewing-background .film-frame {
     padding: 0.5rem 1rem;
     height: auto;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.45rem;
+    background: rgba(6, 8, 20, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .header-left {
+    order: 1;
     flex: 1;
+    min-width: 0;
+  }
+
+  .header-back-home {
     min-width: 0;
   }
 
@@ -2009,10 +2021,30 @@ body.viewing-background .film-frame {
 
   .couple-tag {
     font-size: 0.84rem;
+    white-space: nowrap;
   }
 
   .header-right {
+    order: 2;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .letter-header-nav {
+    order: 3;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.2rem;
+  }
+
+  .letter-page-main {
+    margin: 105px auto 2.5rem auto;
+    padding: 0 1rem;
   }
 
   .story-tabs-bar {
@@ -2196,7 +2228,11 @@ body.viewing-background .film-frame {
 @media (max-width: 560px) {
   .romantic-header {
     padding: 0.45rem 0.75rem;
-    gap: 0.4rem;
+    gap: 0.35rem;
+  }
+
+  .header-left {
+    gap: 0.5rem;
   }
 
   .heart-pulse {
@@ -2204,12 +2240,49 @@ body.viewing-background .film-frame {
   }
 
   .handwritten-subtitle {
-    font-size: 0.92rem;
+    display: none; /* Dejar solo el monograma de pareja para evitar colisiones en pantallas de móvil */
   }
 
   .couple-tag {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .header-carta-link {
+    padding: 0.32rem 0.65rem;
+    font-size: 0.76rem;
+    gap: 0.3rem;
+  }
+
+  .carta-text-long {
+    display: none;
+  }
+
+  .carta-text-short {
+    display: inline;
+  }
+
+  .letter-header-nav {
+    order: 3;
+    width: 100%;
+    display: flex;
+    gap: 0.45rem;
+    padding-top: 0.15rem;
+  }
+
+  .letter-header-nav .header-nav-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.38rem 0.55rem;
+    font-size: 0.76rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .letter-page-main {
+    margin: 98px auto 2rem auto;
+    padding: 0 0.75rem;
   }
 
   .peek-bg-btn {
@@ -2222,12 +2295,12 @@ body.viewing-background .film-frame {
   }
 
   .music-capsule-btn {
-    padding: 0.32rem 0.68rem;
+    padding: 0.32rem 0.65rem;
     gap: 0.45rem;
   }
 
   .music-track-title {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
 
   .music-track-artist {
@@ -2664,6 +2737,1111 @@ body.viewing-background .film-frame {
   .doodle-rocky-fist {
     opacity: 0.6;
     transform: scale(0.85);
+  }
+}
+
+/* ==========================================================================
+   PANTALLA DE BIENVENIDA: SOBRE ROMÁNTICO 3D (ÁBREME)
+   ========================================================================== */
+.envelope-welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #10152e 0%, #060814 85%);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ease, visibility 0.8s;
+  overflow: hidden;
+}
+
+.envelope-welcome-overlay.is-hiding {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.06);
+  filter: blur(4px);
+  visibility: hidden;
+}
+
+.envelope-overlay-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(255, 51, 102, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(246, 192, 101, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.envelope-ambient-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 51, 102, 0.22) 0%, rgba(255, 51, 102, 0.05) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: envelope-glow-pulse 5s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes envelope-glow-pulse {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.2); opacity: 0.95; }
+}
+
+.envelope-hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.envelope-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  background: rgba(246, 192, 101, 0.12);
+  border: 1px solid rgba(246, 192, 101, 0.35);
+  color: var(--gold-warm);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+  backdrop-filter: blur(8px);
+}
+
+.badge-sparkle {
+  color: var(--gold-warm);
+  font-size: 0.9rem;
+}
+
+.envelope-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0.2rem 0 0.4rem 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.envelope-hero-subtitle {
+  font-family: var(--font-hand);
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  color: var(--text-warm);
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+@media (max-width: 480px) {
+  .envelope-hero-subtitle {
+    margin-bottom: 1.4rem;
+  }
+  .envelope-hero-content {
+    padding: 1.2rem 1rem;
+  }
+}
+
+/* 3D Scene */
+.envelope-3d-scene {
+  perspective: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope-card-wrapper {
+  position: relative;
+  width: 360px;
+  height: 230px;
+  cursor: pointer;
+  /* Usar flat para que z-index determine exactamente el orden de capas */
+  transform-style: flat;
+  transition: transform 0.45s var(--ease-spring);
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .envelope-card-wrapper {
+    width: 300px;
+    height: 195px;
+  }
+}
+
+.envelope-card-wrapper:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.envelope-card-wrapper:focus-visible {
+  outline: 2px solid var(--hail-crimson);
+  outline-offset: 6px;
+  border-radius: 14px;
+}
+
+/* Washi Tape decorativo en el sobre */
+.envelope-washi-tape {
+  position: absolute;
+  top: -10px;
+  right: 25px;
+  width: 75px;
+  height: 22px;
+  background: rgba(255, 235, 195, 0.4);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(255, 255, 255, 0.35);
+  border-right: 2px dashed rgba(255, 255, 255, 0.35);
+  transform: rotate(5deg);
+  z-index: 15;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease;
+}
+
+.envelope-card-wrapper.is-open .envelope-washi-tape {
+  opacity: 0.25;
+}
+
+/* Base Trasera del Sobre */
+.envelope-pocket-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #181d38 0%, #0e1226 100%);
+  border-radius: 14px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 51, 102, 0.15);
+  border: 1px solid rgba(255, 220, 200, 0.18);
+  z-index: 1;
+}
+
+/* Solapa Superior (Flap) */
+/* Solapa Superior (Flap) - 56% de altura para traslapar perfectamente el corte frontal y eliminar cualquier fuga */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56%;
+  z-index: 5;
+  transform-origin: top center;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.25s 0.2s, background 0.5s ease;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(180deg, #252f54 0%, #161c38 100%);
+  border-top: 1px solid rgba(255, 230, 210, 0.35);
+  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.55));
+}
+
+/* Carta interior que se desliza hacia arriba (queda completamente resguardada sin asomar por abajo) */
+.envelope-letter-paper {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 14px;
+  bottom: 14px;
+  height: auto;
+  background: linear-gradient(180deg, #fffcf6 0%, #f7efdf 100%);
+  border-radius: 8px;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  padding: 0.95rem 1.1rem;
+  text-align: left;
+  overflow: hidden;
+  border: 1px solid rgba(200, 170, 130, 0.3);
+  transition: transform 0.8s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.6s ease, z-index 0.1s 0.2s;
+}
+
+.letter-paper-preview {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.letter-preview-heart {
+  color: var(--hail-crimson);
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.letter-preview-heading {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1e2e;
+  margin-bottom: 0.4rem;
+}
+
+.letter-preview-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.letter-preview-lines span {
+  display: block;
+  height: 3px;
+  background: rgba(120, 100, 80, 0.2);
+  border-radius: 2px;
+}
+
+.letter-preview-lines span:nth-child(1) { width: 92%; }
+.letter-preview-lines span:nth-child(2) { width: 85%; }
+.letter-preview-lines span:nth-child(3) { width: 70%; }
+
+.letter-preview-quote {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: #b81442;
+  font-weight: 600;
+  margin-top: auto;
+  line-height: 1.2;
+}
+
+/* Bolsillo Delantero (Front Pocket) */
+.envelope-pocket-front {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: 14px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, #181e3a 0%, #0d1124 100%);
+  border-bottom: 1px solid rgba(255, 230, 210, 0.2);
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Sello de Lacre ubicado en la punta exacta de la solapa (56%) */
+.envelope-wax-seal {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff4b77 0%, #b81442 70%, #680521 100%);
+  box-shadow: 0 4px 20px rgba(255, 51, 102, 0.65), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 480px) {
+  .envelope-wax-seal {
+    width: 46px;
+    height: 46px;
+  }
+}
+
+.seal-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.seal-heart {
+  color: #fff5ea;
+  font-size: 1.15rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  line-height: 1;
+}
+
+.seal-text {
+  font-family: var(--font-sans);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffeedb;
+  margin-top: 2px;
+}
+
+/* Etiqueta Manuscrita del Remitente */
+.envelope-handwritten-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  z-index: 7;
+  font-family: var(--font-hand);
+  font-size: 1.18rem;
+  color: var(--gold-warm);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   ESTADOS DE ANIMACIÓN: AL ABRIR LA CARTA (ÁBREME)
+   ========================================================================== */
+.envelope-card-wrapper.is-open .envelope-wax-seal {
+  transform: translate(-50%, -50%) scale(1.4) rotate(15deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* La solapa se despliega hacia arriba y pasa DETRÁS de la carta */
+.envelope-card-wrapper.is-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1 !important;
+  background: linear-gradient(0deg, #181d38 0%, #202747 100%);
+  filter: drop-shadow(0 -4px 10px rgba(0, 0, 0, 0.35));
+}
+
+/* La carta se desliza hacia arriba EN FRENTE de la solapa abierta */
+.envelope-card-wrapper.is-open .envelope-letter-paper {
+  transform: translateY(-95px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  z-index: 3 !important;
+}
+
+/* Botón Destacado: Ábreme */
+.envelope-action-container {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.envelope-abreme-btn {
+  background: linear-gradient(135deg, #ff3366 0%, #d81b60 50%, #ad1457 100%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  padding: 0.85rem 2.6rem;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(255, 51, 102, 0.6), 0 0 45px rgba(255, 51, 102, 0.25);
+  transition: all 0.35s var(--ease-spring);
+}
+
+.envelope-abreme-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 36px rgba(255, 51, 102, 0.8), 0 0 60px rgba(255, 51, 102, 0.4);
+}
+
+.envelope-abreme-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-heart-pulse {
+  color: #ffffff;
+  font-size: 1.15rem;
+  animation: heart-beat 1.4s infinite ease-in-out;
+}
+
+.btn-sparkle-icon {
+  font-size: 1.1rem;
+}
+
+.envelope-click-hint {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--text-warm);
+  opacity: 0.85;
+}
+
+/* Partículas flotantes de corazones al abrir */
+.envelope-floating-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  overflow: hidden;
+}
+
+.floating-burst-heart {
+  position: absolute;
+  pointer-events: none;
+  font-size: 1.4rem;
+  color: var(--hail-crimson);
+  animation: burst-float 1.6s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes burst-float {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--burst-x, 0px), var(--burst-y, -140px)) scale(1.5) rotate(var(--burst-rot, 20deg));
+  }
+}
+
+/* Botón en cabecera principal para ir a la carta */
+.header-carta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 51, 102, 0.15);
+  border: 1px solid rgba(255, 51, 102, 0.4);
+  color: #ff99b3;
+  padding: 0.38rem 0.95rem;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.carta-text-short {
+  display: none;
+}
+
+.header-carta-link:hover {
+  background: var(--hail-crimson);
+  color: #ffffff;
+  box-shadow: 0 0 18px var(--hail-crimson-glow);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   VISTA DE CARTA COMPLETA (CARTA.HTML)
+   ========================================================================== */
+html.letter-html,
+html:has(.letter-page-body) {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100% !important;
+  scroll-behavior: smooth;
+}
+
+body.letter-page-body {
+  overflow-y: visible !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative;
+}
+
+/* Fijar el lienzo de estrellas al viewport para evitar estiramientos al scrollear */
+.letter-page-body #letterStarsCanvas {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Custom scrollbar para la vista de la carta */
+html.letter-html::-webkit-scrollbar {
+  width: 10px;
+}
+html.letter-html::-webkit-scrollbar-track {
+  background: #060814;
+}
+html.letter-html::-webkit-scrollbar-thumb {
+  background: rgba(255, 51, 102, 0.45);
+  border-radius: 6px;
+  border: 2px solid #060814;
+}
+html.letter-html::-webkit-scrollbar-thumb:hover {
+  background: var(--hail-crimson);
+}
+
+.letter-page-body .dream-halo,
+.letter-page-body .analog-grain {
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+
+.header-back-home {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.letter-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.header-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 1.05rem;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-smooth);
+  backdrop-filter: blur(10px);
+}
+
+.header-nav-btn.secondary {
+  background: rgba(14, 18, 38, 0.75);
+  border: 1px solid rgba(255, 230, 210, 0.22);
+  color: var(--text-warm);
+}
+
+.header-nav-btn.secondary:hover {
+  background: rgba(246, 192, 101, 0.2);
+  border-color: var(--gold-warm);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.header-nav-btn.primary {
+  background: linear-gradient(135deg, var(--hail-crimson), #c2185b);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  box-shadow: 0 4px 16px var(--hail-crimson-glow);
+}
+
+.header-nav-btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px var(--hail-crimson-glow);
+}
+
+.letter-ambient-nebula {
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 51, 102, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(246, 192, 101, 0.08) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.letter-candlelight-glow {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 220, 160, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.letter-page-main {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 860px;
+  margin: 95px auto 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.letter-page-scroll-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Papel de Carta Romántico Manuscrito */
+.parchment-sheet {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #fffcf6 0%, #faf3e6 100%);
+  color: #1a1e2e;
+  border-radius: 18px;
+  padding: 3.8rem 3.4rem 3.2rem 3.4rem;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 0 50px rgba(246, 192, 101, 0.15);
+  border: 1px solid rgba(215, 185, 145, 0.45);
+  animation: parchment-emerge 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes parchment-emerge {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .parchment-sheet {
+    padding: 2.5rem 1.4rem 2rem 1.4rem;
+  }
+}
+
+/* Cintas Washi en la carta */
+.parchment-washi-tape {
+  position: absolute;
+  background: rgba(255, 225, 160, 0.55);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(200, 155, 75, 0.4);
+  border-right: 2px dashed rgba(200, 155, 75, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+}
+
+.parchment-washi-tape.tape-top {
+  width: 110px;
+  height: 24px;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.parchment-washi-tape.tape-corner-left {
+  width: 80px;
+  height: 20px;
+  top: 15px;
+  left: -20px;
+  transform: rotate(-35deg);
+  background: rgba(255, 180, 205, 0.5);
+  border-color: rgba(220, 110, 145, 0.45);
+}
+
+.parchment-washi-tape.tape-corner-right {
+  width: 80px;
+  height: 20px;
+  top: 15px;
+  right: -20px;
+  transform: rotate(35deg);
+  background: rgba(160, 235, 215, 0.5);
+  border-color: rgba(70, 180, 155, 0.45);
+}
+
+.parchment-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(180, 145, 100, 0.35);
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.8rem;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: #7d592b;
+}
+
+@media (max-width: 480px) {
+  .parchment-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
+
+.parchment-salutation-box {
+  margin-bottom: 1.5rem;
+}
+
+.parchment-badge-tag {
+  display: inline-block;
+  padding: 0.3rem 0.95rem;
+  border-radius: 20px;
+  background: rgba(255, 51, 102, 0.1);
+  border: 1px solid rgba(255, 51, 102, 0.3);
+  color: #c2185b;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.8rem;
+}
+
+.parchment-recipient {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  color: #1a1e2e;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.parchment-intro-whisper {
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  color: #8c5932;
+  line-height: 1.3;
+}
+
+.parchment-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  color: var(--hail-crimson);
+  font-size: 1rem;
+  margin: 1.5rem 0 2rem 0;
+  opacity: 0.75;
+}
+
+/* Cuerpo de la Carta */
+.parchment-body-content {
+  font-family: var(--font-sans);
+  font-size: 1.12rem;
+  line-height: 1.85;
+  color: #2b3044;
+}
+
+.parchment-paragraph {
+  margin-bottom: 1.5rem;
+}
+
+.parchment-paragraph.lead-p {
+  font-size: 1.22rem;
+  font-weight: 500;
+  color: #151a2d;
+  line-height: 1.8;
+}
+
+/* Tarjeta de Cita Emotiva */
+.parchment-quote-box {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.07) 0%, rgba(246, 192, 101, 0.08) 100%);
+  border-left: 4px solid var(--hail-crimson);
+  border-radius: 0 12px 12px 0;
+  padding: 1.4rem 2rem;
+  margin: 2.2rem 0;
+  box-shadow: 0 4px 15px rgba(255, 51, 102, 0.08);
+}
+
+.quote-symbol {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 0.6;
+  color: var(--hail-crimson);
+  opacity: 0.35;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.quote-text {
+  font-family: var(--font-hand);
+  font-size: 1.55rem;
+  color: #9c1543;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.quote-heart {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  color: var(--hail-crimson);
+  font-size: 1.15rem;
+  opacity: 0.5;
+}
+
+/* Firma y Sello */
+.parchment-signature-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2.8rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(180, 145, 100, 0.35);
+}
+
+.signature-signoff {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #7d592b;
+  margin-bottom: 0.2rem;
+}
+
+.signature-name {
+  font-family: var(--font-hand);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--hail-crimson);
+  letter-spacing: 0.02em;
+}
+
+.parchment-wax-seal {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff4b77 0%, #b81442 70%, #680521 100%);
+  box-shadow: 0 4px 15px rgba(184, 20, 66, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.seal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seal-heart-icon {
+  color: #fff5ea;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.seal-motto-text {
+  font-family: var(--font-sans);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffeedb;
+  margin-top: 3px;
+}
+
+/* Barra de Acciones de la Carta */
+.parchment-actions-bar {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.8rem;
+}
+
+.parchment-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 40px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.35s var(--ease-spring);
+}
+
+.parchment-btn.primary-story-btn {
+  background: linear-gradient(135deg, var(--hail-crimson), #c2185b);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  box-shadow: 0 6px 20px var(--hail-crimson-glow);
+}
+
+.parchment-btn.primary-story-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 28px var(--hail-crimson-glow);
+}
+
+.parchment-btn.secondary-envelope-btn {
+  background: rgba(30, 36, 60, 0.08);
+  border: 1px solid rgba(120, 100, 80, 0.3);
+  color: #3d4560;
+}
+
+.parchment-btn.secondary-envelope-btn:hover {
+  background: rgba(30, 36, 60, 0.15);
+  color: #1a1e2e;
+  transform: translateY(-2px);
+}
+
+.parchment-corner-fold {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 35px 35px;
+  border-color: transparent transparent #e8d9c2 transparent;
+  filter: drop-shadow(-3px -3px 4px rgba(0, 0, 0, 0.12));
+  border-bottom-right-radius: 18px;
+}
+
+.letter-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--text-warm);
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTATIONS FOR LETTER (CARTA.HTML)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .parchment-sheet {
+    padding: 2.2rem 1.15rem 1.8rem 1.15rem;
+    border-radius: 16px;
+  }
+
+  .parchment-quote-box {
+    padding: 1.1rem 1rem 1.1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-left-width: 3.5px;
+  }
+
+  .quote-symbol {
+    font-size: 2.4rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .quote-text {
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+
+  .quote-heart {
+    bottom: 6px;
+    right: 8px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .parchment-washi-tape.tape-top {
+    width: 90px;
+    height: 20px;
+    top: -10px;
+  }
+
+  .parchment-washi-tape.tape-corner-left {
+    width: 65px;
+    height: 16px;
+    top: 8px;
+    left: -10px;
+  }
+
+  .parchment-washi-tape.tape-corner-right {
+    width: 65px;
+    height: 16px;
+    top: 8px;
+    right: -10px;
+  }
+
+  .parchment-header-row {
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    font-size: 1.05rem;
+  }
+
+  .parchment-salutation-box {
+    margin-bottom: 1.2rem;
+  }
+
+  .parchment-badge-tag {
+    font-size: 0.68rem;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .parchment-recipient {
+    font-size: 1.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .parchment-intro-whisper {
+    font-size: 1.22rem;
+    line-height: 1.35;
+  }
+
+  .parchment-divider {
+    margin: 1.2rem 0 1.5rem 0;
+    gap: 0.8rem;
+  }
+
+  .parchment-body-content {
+    font-size: 0.98rem;
+    line-height: 1.68;
+    word-break: break-word;
+  }
+
+  .parchment-paragraph {
+    margin-bottom: 1.25rem;
+  }
+
+  .parchment-paragraph.lead-p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .parchment-signature-area {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+  }
+
+  .signature-details {
+    width: 100%;
+    text-align: center;
+  }
+
+  .signature-signoff {
+    font-size: 1.15rem;
+  }
+
+  .signature-name {
+    font-size: 2.1rem;
+  }
+
+  .parchment-wax-seal {
+    width: 60px;
+    height: 60px;
+  }
+
+  .parchment-actions-bar {
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 1.8rem;
+    width: 100%;
+  }
+
+  .parchment-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .letter-footer {
+    font-size: 1.05rem;
+    padding: 0 0.5rem 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .parchment-sheet {
+    padding: 1.8rem 0.85rem 1.5rem 0.85rem;
+  }
+
+  .parchment-recipient {
+    font-size: 1.55rem;
+  }
+
+  .quote-text {
+    font-size: 1.15rem;
+  }
+
+  .parchment-body-content {
+    font-size: 0.94rem;
   }
 }
 
